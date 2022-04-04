@@ -1,27 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+namespace Assets.Camera
 {
-
-    public Transform target;
-    public Vector3 offset;
-    [Range(1,10)]
-    public float smoothFactor;
-
-
-    private void FixedUpdate()
+    public class CameraFollow : MonoBehaviour
     {
-        Follow();
+        [SerializeField] private Transform _target;
+        [SerializeField] private Vector3 _offset = new Vector3(0, 0, -15);
+        [Range(1, 10)] [SerializeField] private float _smoothFactor = 6;
 
+        void FixedUpdate()
+        {
+            Follow();
+        }
 
-    }
-
-    void Follow()
-    {
-        Vector3 targetPosition = target.position + offset;
-        Vector3 smoothPosition = Vector3.Lerp(transform.position,targetPosition,smoothFactor*Time.fixedDeltaTime);
-        transform.position = smoothPosition;
+        private void Follow()
+        {
+            Vector3 targetPosition = _target.position + _offset;
+            Vector3 smoothPosition =
+                Vector3.Lerp(transform.position, targetPosition, _smoothFactor * Time.fixedDeltaTime);
+            transform.position = smoothPosition;
+        }
     }
 }
