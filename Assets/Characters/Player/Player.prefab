@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 634888871348780673}
   - component: {fileID: 634888871348780672}
   - component: {fileID: 634888871348780674}
+  - component: {fileID: 7684926239856078031}
   - component: {fileID: 634888871348780675}
   m_Layer: 0
   m_Name: Player
@@ -88,6 +89,21 @@ MonoBehaviour:
   _directionIndicator: {fileID: 8240267662930410022}
   _movementSpeed: 10
   _jumpForce: 20
+--- !u!114 &7684926239856078031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634888871348780734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96fc3cbad75b000479bea7096710cc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 3
+  _immunityCooldown: 1
+  _damageVisualizerFrequency: 0.05
 --- !u!114 &634888871348780675
 MonoBehaviour:
   m_ObjectHideFlags: 0
