@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Assets.Characters.Player.Scripts
 {
-    public class PlayerController : BaseCharacter
+    public class PlayerController : BaseCharacterController
     {
         private void OnMove(InputAction.CallbackContext ctx)
         {
@@ -14,7 +14,7 @@ namespace Assets.Characters.Player.Scripts
         {
             if (ctx.started)
             {
-                HandleJump();
+                Jump();
             }
         }
 

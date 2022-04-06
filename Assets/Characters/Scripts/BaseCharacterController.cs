@@ -4,7 +4,7 @@ namespace Assets.Characters
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class BaseCharacter : MonoBehaviour
+    public abstract class BaseCharacterController : MonoBehaviour
     {
         [Header("Debugging")]
         [SerializeField] private GameObject _directionIndicator;
@@ -14,7 +14,7 @@ namespace Assets.Characters
         [SerializeField] private float _jumpForce = 20f;
 
         //Compensate for Time.deltaTime induced sluggishness
-        private readonly int _deltaTimeCompensator = 20;
+        private const int DeltaTimeCompensator = 20;
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _lastCharacterDirection;
@@ -23,23 +23,23 @@ namespace Assets.Characters
         protected Vector2 InputVector;
         protected bool CharacterMovementIsLocked;
 
-        void Start()
+        private void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _lastCharacterDirection = new Vector2(1, 0);
         }
 
-        void Update()
+        private void Update()
         {
-            GetLastDirection();
+            SaveLastDirection();
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
-            HandleMovement();
+            Move();
         }
 
-        private void GetLastDirection()
+        private void SaveLastDirection()
         {
             Vector2 currentDirection = _lastCharacterDirection.normalized;
 
@@ -59,30 +59,23 @@ namespace Assets.Characters
             }
         }
 
-        private void HandleMovement()
+        private void Move()
         {
             if (!CharacterMovementIsLocked)
             {
                 var movement =
                     new Vector2(
                         InputVector.x * Mathf.Max(0, _movementSpeed - Mathf.Abs(_rigidbody2D.velocity.x)) * Time.deltaTime *
-                        _deltaTimeCompensator, 0);
+                        DeltaTimeCompensator, 0);
                 _rigidbody2D.AddForce(movement, ForceMode2D.Impulse);
-                Debug.Log($"Player moving: {movement}");
-            }
-            else
-            {
-                Debug.Log($"Player movement locked: {CharacterMovementIsLocked}");
             }
         }
 
-        protected void HandleJump()
+        protected void Jump()
         {
-            Debug.Log($"Player grounded: {_characterIsGrounded}");
             if (_characterIsGrounded)
             {
                 _rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-                Debug.Log("Player jumped!");
             }
         }
 
