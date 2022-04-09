@@ -53,7 +53,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18035e3d1a3197a4385527ebf870cf46, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
@@ -89,6 +89,9 @@ MonoBehaviour:
   _directionIndicator: {fileID: 8240267662930410022}
   _movementSpeed: 10
   _jumpForce: 20
+  _jumpableTags:
+  - Map
+  - Platform
 --- !u!114 &7684926239856078031
 MonoBehaviour:
   m_ObjectHideFlags: 0

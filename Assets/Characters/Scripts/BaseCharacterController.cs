@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Characters
@@ -12,6 +13,9 @@ namespace Assets.Characters
         [Header("Character movement")]
         [SerializeField] private float _movementSpeed = 10f;
         [SerializeField] private float _jumpForce = 20f;
+
+        [Header("Jumpable surfaces")]
+        [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };
 
         //Compensate for Time.deltaTime induced sluggishness
         private const int DeltaTimeCompensator = 20;
@@ -78,18 +82,20 @@ namespace Assets.Characters
                 _rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             }
         }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Map"))
+            if (_jumpableTags.Contains(collision.gameObject.tag))
             {
                 _characterIsGrounded = true;
             }
+                
+            
         }
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Map"))
+           
+            if (_jumpableTags.Contains(collision.gameObject.tag))
             {
                 _characterIsGrounded = false;
             }
