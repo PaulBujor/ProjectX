@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Characters
@@ -26,7 +27,7 @@ namespace Assets.Characters
         private void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            _lastCharacterDirection = new Vector2(1, 0);
+            _lastCharacterDirection = Vector2.right;
         }
 
         private void Update()
@@ -59,6 +60,16 @@ namespace Assets.Characters
             }
         }
 
+        public void SetLastDirection(Vector2 direction)
+        {
+            _lastCharacterDirection = direction;
+        }
+
+        public Vector2 GetLastDirection()
+        {
+            return InputVector != Vector2.zero ? InputVector : _lastCharacterDirection;
+        }
+
         private void Move()
         {
             if (!CharacterMovementIsLocked)
@@ -75,23 +86,16 @@ namespace Assets.Characters
         {
             if (_characterIsGrounded)
             {
+                _characterIsGrounded = false;
                 _rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Map"))
+            if (collision.contacts.Select(contact => contact.point.y).Min() < transform.position.y)
             {
                 _characterIsGrounded = true;
-            }
-        }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Map"))
-            {
-                _characterIsGrounded = false;
             }
         }
     }

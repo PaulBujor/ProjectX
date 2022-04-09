@@ -5,12 +5,12 @@ namespace Assets.Characters.Player.Scripts
 {
     public class PlayerController : BaseCharacterController
     {
-        private void OnMove(InputAction.CallbackContext ctx)
+        public void OnMove(InputAction.CallbackContext ctx)
         {
             InputVector = ctx.ReadValue<Vector2>();
         }
 
-        private void OnJump(InputAction.CallbackContext ctx)
+        public void OnJump(InputAction.CallbackContext ctx)
         {
             if (ctx.started)
             {
@@ -18,7 +18,7 @@ namespace Assets.Characters.Player.Scripts
             }
         }
 
-        private void OnLockMovement(InputAction.CallbackContext ctx)
+        public void OnLockMovement(InputAction.CallbackContext ctx)
         {
             if (ctx.started)
             {
