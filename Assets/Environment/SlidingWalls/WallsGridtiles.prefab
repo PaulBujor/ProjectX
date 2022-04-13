@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5937421366129153144}
   - component: {fileID: 5937421366129153145}
   m_Layer: 0
-  m_Name: Walls
+  m_Name: WallsGridtiles
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

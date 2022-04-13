@@ -1,73 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Characters.Scripts
-{
-    public class MovementOnWallCollision : MonoBehaviour
+
+namespace Assets { 
+    public class MovementOnWallCollision : EnemyMovementController
     {
-        [Header("Movement speed")]
         [SerializeField]
-        private float moveSpeed = 6f;
+        private bool isRightDirection = false;
 
-        [Header("Start direction")]
         [SerializeField]
-        private float movementDirection = 1f;
+        private float rcDistance = 0.7f;
 
-        [Header("Enemy target")]
-        [SerializeField]
-        private Rigidbody2D enemyTarget;
-
-        private bool facingRight;
-        private Vector3 localScale;
+        private SpriteRenderer _spriteRenderer;
 
         private void Start()
         {
-            localScale = transform.localScale;
-            enemyTarget = GetComponent<Rigidbody2D>();
+            _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            _spriteRenderer.flipX = isRightDirection;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            enemyTarget.velocity = new Vector2(movementDirection * moveSpeed, enemyTarget.velocity.y);
+            MoveToDirection(isRightDirection);
+
+            CheckForWalls();
+            
         }
 
-        private void LateUpdate()
+        private void CheckForWalls()
         {
-            checkFacingDirection();
-        }
+            Vector3 rcDirection = (isRightDirection) ? Vector3.right : Vector3.left;
 
-        private void checkFacingDirection()
-        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + rcDirection * rcDistance - new Vector3(0f, 0.01f, 0f), rcDirection, 0.1f);
+
+            if (hit.collider != null)
             {
-                if (movementDirection > 0)
+                if(hit.transform.tag == "Wall")
                 {
-                    facingRight = true;
+                    Debug.Log(hit.transform.tag);
+                    isRightDirection = !isRightDirection;
+                    _spriteRenderer.flipX = !isRightDirection;
                 }
-                else if (movementDirection < 0)
-                {
-                    facingRight = false;
-                }
-
-                if (((facingRight) && (localScale.x < 0)) || ((!facingRight) && (localScale.x > 0)))
-                {
-                    localScale.x *= -1;
-                }
-
-                transform.localScale = localScale;
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "Wall")
-            {
-                movementDirection *= -1;
-            }
+            Debug.Log(collision.gameObject.tag);
         }
-
-       
-
-
     }
 }
