@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+
 [RequireComponent(typeof(Collider2D))]
 public class EnemyMovementController : MonoBehaviour
 {
@@ -11,7 +11,8 @@ public class EnemyMovementController : MonoBehaviour
     [Header("Enemy movement")]
     [SerializeField] private float _movementSpeed = 5f;
 
-   
+    private int checkpointsPosition = 0;
+
     private Rigidbody2D enemyTarget;
 
     private void Start()
@@ -30,14 +31,24 @@ public class EnemyMovementController : MonoBehaviour
         {
             transform.position += transform.right * _movementSpeed * Time.deltaTime;
         }
-        // -transform.right = left
+        // -transform.right == left
         else transform.position += -transform.right * _movementSpeed * Time.deltaTime;
 
     }
 
-    public void MoveToCheckpoints()
+    public void MoveToCheckpoints(Transform[] checkpoints)
     {
+        if(Vector2.Distance(transform.position, checkpoints[checkpointsPosition].position) < 0.02f){
 
+            checkpointsPosition++;
+            if (checkpointsPosition == checkpoints.Length)
+            {
+                checkpointsPosition = 0;
+            }
+        }
+        
+        transform.position = Vector2.MoveTowards(transform.position, checkpoints[checkpointsPosition].position, Time.deltaTime * _movementSpeed);
+               
     }
 
 }
