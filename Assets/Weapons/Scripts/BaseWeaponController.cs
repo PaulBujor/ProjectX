@@ -24,31 +24,13 @@ namespace Assets.Weapons.Scripts
         {
             _isShooting = false;
             _shootingCoroutineIsRunning = false;
-            //StartCoroutine(ShootingAtRateOfFire());
         }
-
-        //private void Update()
-        //{
-        //    if (_isShooting)
-        //    {
-        //        StartCoroutine(ShootingAtRateOfFire());
-        //    }
-        //    else
-        //    {
-        //        StopCoroutine(ShootingAtRateOfFire());
-        //    }
-        //}
 
         private IEnumerator ShootingAtRateOfFire()
         {
             _shootingCoroutineIsRunning = true;
             while (_isShooting)
             {
-                //if (_isShooting)
-                //{
-                //    OnShoot();
-                //}
-
                 OnShoot();
                 yield return new WaitForSeconds(_rateOfFire / 10f);
             }
