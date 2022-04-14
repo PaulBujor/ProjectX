@@ -18,11 +18,13 @@ namespace Assets.Weapons.Scripts
         private float _rateOfFire = 3f;
 
         private bool _isShooting;
+        private bool _shootingCoroutineIsRunning;
 
         private void Start()
         {
             _isShooting = false;
-            StartCoroutine(ShootingAtRateOfFire());
+            _shootingCoroutineIsRunning = false;
+            //StartCoroutine(ShootingAtRateOfFire());
         }
 
         //private void Update()
@@ -39,15 +41,19 @@ namespace Assets.Weapons.Scripts
 
         private IEnumerator ShootingAtRateOfFire()
         {
-            while (true)
+            _shootingCoroutineIsRunning = true;
+            while (_isShooting)
             {
-                if (_isShooting)
-                {
-                    OnShoot();
-                }
+                //if (_isShooting)
+                //{
+                //    OnShoot();
+                //}
 
+                OnShoot();
                 yield return new WaitForSeconds(_rateOfFire / 10f);
             }
+
+            _shootingCoroutineIsRunning = false;
         }
 
         private void OnShoot()
@@ -55,12 +61,17 @@ namespace Assets.Weapons.Scripts
             var shootingDirection = GetComponent<BaseCharacterController>()?.GetLastDirection() ?? Vector2.right;
             var projectile = Instantiate(_projectile, transform.position, transform.rotation);
             var projectileController = projectile.GetComponent<BaseProjectileController>();
+            projectileController.tag = tag;
             projectileController.Shoot(shootingDirection);
         }
 
         protected void OnShootStart()
         {
             _isShooting = true;
+            if (!_shootingCoroutineIsRunning)
+            {
+                StartCoroutine(ShootingAtRateOfFire());
+            }
         }
 
         protected void OnShootEnd()
