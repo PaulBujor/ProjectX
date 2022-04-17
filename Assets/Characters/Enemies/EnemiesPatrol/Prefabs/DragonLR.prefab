@@ -203,13 +203,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2972304220440085628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3fe7f8d5de0c804fbd49f53d792253f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c8327b2ddbca304688e59ce5bffb132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 5
   isRightDirection: 0
   rcDistance: 0.7
-  rcOriginPoint: {fileID: 1383104}
-  grounds:
-  - Map
-  - Platform
+  rcOriginPoint: {fileID: 0}

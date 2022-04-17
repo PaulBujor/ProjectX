@@ -5,16 +5,15 @@ using UnityEngine;
 
 
 namespace Assets {
-    public class EnemyObstacleDetection : EnemyMovementController
+    public class EnemyPatrol : EnemyMovementController
     {
-        [SerializeField]
+
+       
         private bool isRightDirection = false;
 
-        [SerializeField]
-        private float rcDistance = 0.7f;
-
-        [SerializeField]
-        private Transform rcOriginPoint;        
+        [Header("Raycast detection")]
+        [SerializeField] private float rcDistance = 0.7f;                
+        [SerializeField] private Transform rcOriginPoint;        
 
         private Vector2 direction = new Vector2(-1, 0);
 

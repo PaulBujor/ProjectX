@@ -8,7 +8,7 @@ public class EnemyMovementController : MonoBehaviour
 {
     
 
-    [Header("Enemy movement")]
+    [Header("Physics")]
     [SerializeField] protected float _movementSpeed = 5f;
 
     private int checkpointsPosition = 0;

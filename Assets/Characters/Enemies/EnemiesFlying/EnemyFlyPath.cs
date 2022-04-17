@@ -5,18 +5,14 @@ using UnityEngine;
 public class EnemyFlyPath : EnemyMovementController
 {
 
+    [Header("Fly path checkpoints")]
     [SerializeField]
     private Transform[] checkpoints;
 
-    [Header("Follow player when in range?")]
-    [SerializeField]
-    private bool isFollowing = false;
-
-    [SerializeField]
-    private GameObject player;
-
-    [SerializeField]
-    private float detectionRange = 5;
+    [Header("Custom behaviour")]
+    [SerializeField] private bool isFollowingPlayer = false;
+    [SerializeField] private GameObject player;
+    [SerializeField] private float detectionRange = 5;
 
     private Transform playerPosition;
     private Vector2 currentPosition;
@@ -32,7 +28,7 @@ public class EnemyFlyPath : EnemyMovementController
     {
         updateCurrentPosition();
 
-        if (isFollowing)
+        if (isFollowingPlayer)
         {
             FlyTowardsPlayer();
         }
