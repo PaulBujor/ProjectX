@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets.Audio.Scripts;
 using Assets.Characters;
 using Assets.Weapons.Projectiles;
 using UnityEngine;
@@ -20,10 +21,13 @@ namespace Assets.Weapons.Scripts
         private bool _isShooting;
         private bool _shootingCoroutineIsRunning;
 
+        private BaseAudioController _audioController;
+
         private void Start()
         {
             _isShooting = false;
             _shootingCoroutineIsRunning = false;
+            _audioController = GetComponent<BaseAudioController>();
         }
 
         private IEnumerator ShootingAtRateOfFire()
@@ -45,6 +49,12 @@ namespace Assets.Weapons.Scripts
             var projectileController = projectile.GetComponent<BaseProjectileController>();
             projectileController.tag = tag;
             projectileController.Shoot(shootingDirection);
+
+            if (_audioController != null)
+            {
+                var volumeModifier = Random.Range(1, 6)/10f;
+                _audioController.PlayOnce("Shoot", volumeModifier);
+            }
         }
 
         protected void OnShootStart()
