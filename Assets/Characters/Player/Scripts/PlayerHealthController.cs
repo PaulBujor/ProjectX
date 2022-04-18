@@ -25,6 +25,19 @@ namespace Assets.Characters.Player.Scripts
                 childrenSprite.color = Color.black;
             }
 
+            // make sure the character can no longer move
+            var baseCharacterController = GetComponent<BaseCharacterController>();
+            if (baseCharacterController != null)
+            {
+                baseCharacterController.Kill();
+            }
+
+            StartCoroutine(EndGameTimeout());
+        }
+
+        private IEnumerator EndGameTimeout()
+        {
+            yield return new WaitForSeconds(2);
             UnityEditor.EditorApplication.isPlaying = false;
         }
 
