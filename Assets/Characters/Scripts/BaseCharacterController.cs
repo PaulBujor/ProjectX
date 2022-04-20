@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Audio.Scripts;
 using UnityEngine;
@@ -15,7 +16,10 @@ namespace Assets.Characters
         [SerializeField] private float _movementSpeed = 10f;
         [SerializeField] private float _jumpForce = 20f;
 
-        /// Compensate for Time.deltaTime induced sluggishness
+        [Header("Jumpable surfaces")]
+        [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };     
+
+        // Compensate for Time.deltaTime induced sluggishness
         private const int DeltaTimeCompensator = 20;
         private Vector2 _lastCharacterDirection;
         private BaseAudioController _audioController;
@@ -118,22 +122,23 @@ namespace Assets.Characters
                 }
                 return true;
             }
-
+            
             return false;
         }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Debug.DrawLine(transform.position, collision.transform.position, Color.cyan);
-            if (collision.contacts.Select(contact => contact.point.y).Min() < transform.position.y)
+            if (_jumpableTags.Contains(collision.gameObject.tag))
             {
                 CharacterIsGrounded = true;
-            }
+            }            
         }
 
         private void OnCollisionExit2D(Collision2D collision)
-        {
-            CharacterIsGrounded = false;
+        {           
+            if (_jumpableTags.Contains(collision.gameObject.tag))
+            {
+                _characterIsGrounded = false;
+            }  
         }
     }
 }
