@@ -1,3 +1,4 @@
+using Assets.Audio.Scripts;
 using UnityEngine;
 
 namespace Assets.Characters.Scripts
@@ -7,8 +8,11 @@ namespace Assets.Characters.Scripts
         [Header("State at spawn")]
         [SerializeField] private int _health = 3;
 
+        private BaseAudioController _audioController;
+
         private void Start()
         {
+            _audioController = GetComponent<BaseAudioController>();
             if (_health <= 0)
             {
                 Debug.Log($"{this.GetType().Name} was killed on Start() - Initial health: {_health}");
@@ -23,6 +27,17 @@ namespace Assets.Characters.Scripts
             if (_health <= 0)
             {
                 OnDeath();
+                if (_audioController != null)
+                {
+                    _audioController.PlayOnce("Death");
+                }
+            }
+            else
+            {
+                if (_audioController != null)
+                {
+                    _audioController.PlayOnce("TakeDamage");
+                }
             }
         }
 

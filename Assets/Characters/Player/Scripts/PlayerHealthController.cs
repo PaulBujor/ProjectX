@@ -11,22 +11,34 @@ namespace Assets.Characters.Player.Scripts
         [Tooltip("Time of immunity - when the player takes damage, he will only take more damage after the cooldown is finished")]
         private float _immunityCooldown = 1f;
         [SerializeField]
-        [Tooltip("How ofthen should the character flash when taking damage")]
-        private float _damageVisualizerFrequency = .05f;
+        [Tooltip("How many seconds between character flashes when taking damage")]
+        private float _damageVisualizerFrequency = 3f;
 
         private bool _isImmune = false;
 
         protected override void OnDeath()
         {
-            Debug.LogError("PLAYER DED"); //todo elegant
-
             var childrenSprites = GetComponentsInChildren<SpriteRenderer>();
-
 
             foreach (var childrenSprite in childrenSprites)
             {
                 childrenSprite.color = Color.black;
             }
+
+            // make sure the character can no longer move
+            var baseCharacterController = GetComponent<BaseCharacterController>();
+            if (baseCharacterController != null)
+            {
+                baseCharacterController.Kill();
+            }
+
+            StartCoroutine(EndGameTimeout());
+        }
+
+        private IEnumerator EndGameTimeout()
+        {
+            yield return new WaitForSeconds(2);
+            UnityEditor.EditorApplication.isPlaying = false;
         }
 
         private IEnumerator DamageCooldown()
@@ -46,8 +58,8 @@ namespace Assets.Characters.Player.Scripts
                 foreach (var childrenSprite in childrenSprites)
                 {
                     childrenSprite.enabled = !childrenSprite.enabled;
-                    yield return new WaitForSeconds(_damageVisualizerFrequency);
                 }
+                yield return new WaitForSeconds(_damageVisualizerFrequency / 20f);
             }
 
             foreach (var childrenSprite in childrenSprites)
