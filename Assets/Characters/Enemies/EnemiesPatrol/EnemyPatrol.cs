@@ -46,7 +46,7 @@ namespace Assets {
             {
                 if (hit.transform.tag == "Wall")
                 {
-                    Debug.Log(hit.transform.tag);
+               /*     Debug.Log(hit.transform.tag);*/
                     isRightDirection = !isRightDirection;
                     _spriteRenderer.flipX = !isRightDirection;
                 }
@@ -63,7 +63,7 @@ namespace Assets {
             if (hit == false || hit.collider.CompareTag("Player"))
             {
 
-                Debug.Log("hit ground");
+                /*Debug.Log("hit ground");*/
                     isRightDirection = !isRightDirection;
                     _spriteRenderer.flipX = !isRightDirection;
                 direction *= -1;
@@ -73,7 +73,7 @@ namespace Assets {
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log(collision.gameObject.tag);
+            /*Debug.Log(collision.gameObject.tag);*/
         }
     }
 }
