@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Audio.Scripts;
+
 using UnityEngine;
 
 namespace Assets.Characters
@@ -18,6 +19,7 @@ namespace Assets.Characters
 
         [Header("Jumpable surfaces")]
         [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };     
+
 
         // Compensate for Time.deltaTime induced sluggishness
         private const int DeltaTimeCompensator = 20;
