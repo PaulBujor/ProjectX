@@ -137,7 +137,7 @@ namespace Assets.Characters
         {           
             if (_jumpableTags.Contains(collision.gameObject.tag))
             {
-                _characterIsGrounded = false;
+                CharacterIsGrounded = false;
             }  
         }
     }
