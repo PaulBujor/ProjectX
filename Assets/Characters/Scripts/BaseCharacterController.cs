@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Assets.Audio.Scripts;
 using UnityEngine;
 
 namespace Assets.Characters
@@ -15,32 +17,55 @@ namespace Assets.Characters
         [SerializeField] private float _jumpForce = 20f;
 
         [Header("Jumpable surfaces")]
-        [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };
+        [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };     
 
-        //Compensate for Time.deltaTime induced sluggishness
+        // Compensate for Time.deltaTime induced sluggishness
         private const int DeltaTimeCompensator = 20;
-
-        private Rigidbody2D _rigidbody2D;
         private Vector2 _lastCharacterDirection;
-        private bool _characterIsGrounded;
+        private BaseAudioController _audioController;
+        private bool _characterIsDead = false;
 
+        protected bool CharacterIsGrounded;
+        protected Rigidbody2D Rigidbody;
         protected Vector2 InputVector;
         protected bool CharacterMovementIsLocked;
 
         private void Start()
         {
-            _rigidbody2D = GetComponent<Rigidbody2D>();
-            _lastCharacterDirection = new Vector2(1, 0);
+            Rigidbody = GetComponent<Rigidbody2D>();
+            _lastCharacterDirection = Vector2.right;
+            _audioController = GetComponent<BaseAudioController>();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             SaveLastDirection();
+            if (_audioController != null)
+            {
+                if (CharacterIsGrounded && Rigidbody.velocity != Vector2.zero && InputVector != Vector2.zero)
+                {
+                    _audioController.PlayLooping("Walk");
+                }
+                else
+                {
+                    _audioController.StopLooping("Walk");
+                }
+            }
+
+            if (_characterIsDead)
+            {
+                CharacterMovementIsLocked = true;
+            }
         }
 
         private void FixedUpdate()
         {
             Move();
+        }
+
+        public void Kill()
+        {
+            _characterIsDead = true;
         }
 
         private void SaveLastDirection()
@@ -63,42 +88,57 @@ namespace Assets.Characters
             }
         }
 
+        public void SetLastDirection(Vector2 direction)
+        {
+            _lastCharacterDirection = direction;
+        }
+
+        public Vector2 GetLastDirection()
+        {
+            return InputVector != Vector2.zero ? InputVector : _lastCharacterDirection;
+        }
+
         private void Move()
         {
             if (!CharacterMovementIsLocked)
             {
                 var movement =
                     new Vector2(
-                        InputVector.x * Mathf.Max(0, _movementSpeed - Mathf.Abs(_rigidbody2D.velocity.x)) * Time.deltaTime *
+                        InputVector.x * Mathf.Max(0, _movementSpeed - Mathf.Abs(Rigidbody.velocity.x)) * Time.deltaTime *
                         DeltaTimeCompensator, 0);
-                _rigidbody2D.AddForce(movement, ForceMode2D.Impulse);
+                Rigidbody.AddForce(movement, ForceMode2D.Impulse);
             }
         }
 
-        protected void Jump()
+        protected bool Jump()
         {
-            if (_characterIsGrounded)
+            if (CharacterIsGrounded)
             {
-                _rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+                CharacterIsGrounded = false;
+                Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+                if (_audioController != null)
+                {
+                    _audioController.PlayOnce("Jump");
+                }
+                return true;
             }
+            
+            return false;
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (_jumpableTags.Contains(collision.gameObject.tag))
             {
-                _characterIsGrounded = true;
-            }
-                
-            
+                CharacterIsGrounded = true;
+            }            
         }
 
         private void OnCollisionExit2D(Collision2D collision)
-        {
-           
+        {           
             if (_jumpableTags.Contains(collision.gameObject.tag))
             {
                 _characterIsGrounded = false;
-            }
+            }  
         }
     }
 }
