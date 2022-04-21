@@ -60,9 +60,7 @@ namespace Assets {
             if (hit == false || hit.collider.CompareTag("Player"))
             {
                isRightDirection = !isRightDirection;
-               _spriteRenderer.flipX = !isRightDirection;
-               direction *= -1;
-                
+               _spriteRenderer.flipX = !isRightDirection;                
             }
         }
 
