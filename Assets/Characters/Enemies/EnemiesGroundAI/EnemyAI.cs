@@ -29,6 +29,7 @@ namespace Assets.Characters {
         private bool isRightDirection = true;
         private bool isNearWall = false;
         private bool isEnemyGrounded;
+        private bool isPlayerDetected = false;
         RaycastHit2D isGrounded;
         Seeker seeker;
         Rigidbody2D rb;
@@ -44,8 +45,13 @@ namespace Assets.Characters {
        
 
         private void FixedUpdate()
-        {           
-            if (TargetInDistance() && followEnabled)
+        {
+            if (!isPlayerDetected)
+            {
+                TargetInDistance();
+            }
+
+            if (isPlayerDetected && followEnabled)
             {
                 PathFollow();
             }
@@ -60,7 +66,7 @@ namespace Assets.Characters {
 
         private void UpdatePath()
         {
-            if (followEnabled && TargetInDistance() && seeker.IsDone())
+            if (followEnabled && isPlayerDetected && seeker.IsDone())
             {
                 seeker.StartPath(rb.position, target.position, OnPathComplete);
             }
@@ -157,9 +163,12 @@ namespace Assets.Characters {
         }
 
 
-        private bool TargetInDistance()
+        private void TargetInDistance()
         {
-            return Vector2.Distance(transform.position, target.transform.position) < activateDistance;
+            if(Vector2.Distance(transform.position, target.transform.position) < activateDistance)
+            {
+                isPlayerDetected = true;
+            }
         }
 
         private void OnPathComplete(Path p)
