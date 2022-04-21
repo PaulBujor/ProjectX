@@ -10,7 +10,7 @@ namespace Assets.Characters {
         public Transform target;
         public float activateDistance = 50f;
         public float pathUpdateSeconds = 0.5f;
-        public float rcDistance = 1f;
+        public float rcDistance = 3f;
 
         [Header("Physics")]
         public float speed = 200f;
@@ -27,7 +27,7 @@ namespace Assets.Characters {
         private Path path;
         private int currentWaypoint = 0;
         private bool isRightDirection = true;
-        private bool isCloseToWall = false;
+        private bool isNearWall = false;
         private bool isEnemyGrounded;
         RaycastHit2D isGrounded;
         Seeker seeker;
@@ -44,19 +44,15 @@ namespace Assets.Characters {
        
 
         private void FixedUpdate()
-        {
-
-            Debug.Log(isGrounded);
-          
-
+        {           
             if (TargetInDistance() && followEnabled)
             {
                 PathFollow();
             }
 
-            isNearWall();
+            CheckForWalls();
 
-            if (isCloseToWall)
+            if (isNearWall)
             {
                 JumpTestas();
             }
@@ -127,16 +123,12 @@ namespace Assets.Characters {
         private void JumpTestas()
         {
             if (isEnemyGrounded)
-            {
-                
-                rb.AddForce(Vector2.up * 1f, ForceMode2D.Impulse);
-                
-            }
-
-            
+            {                
+                rb.AddForce(Vector2.up * 1f, ForceMode2D.Impulse);                
+            }           
         }
 
-        private void isNearWall()
+        private void CheckForWalls()
         {
             if (rb.velocity.x > 0.05f)
             {
@@ -146,9 +138,6 @@ namespace Assets.Characters {
             {
                 isRightDirection = false;
             }
-
-
-
 
             Vector3 rcDirection = (isRightDirection) ? Vector3.right : Vector3.left;
 
@@ -161,14 +150,10 @@ namespace Assets.Characters {
             {
                 if (hit.transform.tag == "Map")
                 {
-                    /*     Debug.Log(hit.transform.tag);*/
-                    /*isRightDirection = !isRightDirection;*/
-                    isCloseToWall = true;
+                    isNearWall = true;
                 }
-                else isCloseToWall = false;
+                else isNearWall = false;
             }
-
-
         }
 
 
