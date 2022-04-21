@@ -13,10 +13,8 @@ namespace Assets {
 
         [Header("Raycast detection")]
         [SerializeField] private float rcDistance = 0.7f;                
-        [SerializeField] private Transform rcOriginPoint;        
-
-        private Vector2 direction = new Vector2(-1, 0);
-
+        [SerializeField] private Transform rcOriginPoint;    
+                
         private SpriteRenderer _spriteRenderer;
 
         private void Start()
@@ -41,7 +39,6 @@ namespace Assets {
 
             Debug.DrawRay(transform.position, rcDirection * rcDistance);
 
-
             if (hit.collider != null)
             {
                 if (hit.transform.tag == "Wall")
@@ -62,11 +59,9 @@ namespace Assets {
 
             if (hit == false || hit.collider.CompareTag("Player"))
             {
-
-                /*Debug.Log("hit ground");*/
-                    isRightDirection = !isRightDirection;
-                    _spriteRenderer.flipX = !isRightDirection;
-                direction *= -1;
+               isRightDirection = !isRightDirection;
+               _spriteRenderer.flipX = !isRightDirection;
+               direction *= -1;
                 
             }
         }

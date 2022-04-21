@@ -33,7 +33,6 @@ public class EnemyMovementController : MonoBehaviour
         }
         // -transform.right == left
         else transform.position += -transform.right * _movementSpeed * Time.deltaTime;
-
     }
 
     public void MoveToCheckpoints(Transform[] checkpoints)

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Audio.Scripts;
@@ -16,6 +17,7 @@ namespace Assets.Characters
         [Header("Character movement")]
         [SerializeField] private float _movementSpeed = 10f;
         [SerializeField] private float _jumpForce = 20f;
+        [SerializeField] private float _wallJumpCooldown = 0.3f;
 
         [Header("Jumpable surfaces")]
         [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };     
@@ -26,13 +28,13 @@ namespace Assets.Characters
         private Vector2 _lastCharacterDirection;
         private BaseAudioController _audioController;
         private bool _characterIsDead = false;
-
+        private bool isJumpCooldown = false;
         protected bool CharacterIsGrounded;
         protected Rigidbody2D Rigidbody;
         protected Vector2 InputVector;
         protected bool CharacterMovementIsLocked;
 
-        private void Start()
+        protected void Start()
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             _lastCharacterDirection = Vector2.right;
@@ -60,7 +62,7 @@ namespace Assets.Characters
             }
         }
 
-        private void FixedUpdate()
+        protected void FixedUpdate()
         {
             Move();
         }
@@ -102,21 +104,24 @@ namespace Assets.Characters
 
         private void Move()
         {
+            
             if (!CharacterMovementIsLocked)
             {
                 var movement =
                     new Vector2(
                         InputVector.x * Mathf.Max(0, _movementSpeed - Mathf.Abs(Rigidbody.velocity.x)) * Time.deltaTime *
                         DeltaTimeCompensator, 0);
+
+               
                 Rigidbody.AddForce(movement, ForceMode2D.Impulse);
             }
         }
 
         protected bool Jump()
         {
-            if (CharacterIsGrounded)
+            if (CharacterIsGrounded && !isJumpCooldown)
             {
-                CharacterIsGrounded = false;
+                StartCoroutine(WallJumpCooldown());
                 Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
                 if (_audioController != null)
                 {
@@ -127,6 +132,14 @@ namespace Assets.Characters
             
             return false;
         }
+
+        private IEnumerator WallJumpCooldown()
+        {
+            isJumpCooldown = true;
+            yield return new WaitForSeconds(_wallJumpCooldown);
+            isJumpCooldown = false;
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (_jumpableTags.Contains(collision.gameObject.tag))

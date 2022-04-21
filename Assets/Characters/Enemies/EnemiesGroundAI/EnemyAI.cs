@@ -4,7 +4,7 @@ using UnityEngine;
 using Pathfinding;
 
 namespace Assets.Characters {
-    public class EnemyAI : MonoBehaviour
+    public class EnemyAI : BaseCharacterController
     {
         [Header("Pathfinding")]
         public Transform target;
@@ -12,11 +12,9 @@ namespace Assets.Characters {
         public float pathUpdateSeconds = 0.5f;
         public float rcDistance = 3f;
 
-        [Header("Physics")]
-        public float speed = 200f;
+        [Header("Physics")]     
         public float nextWaypointDistance = 3f;
-        public float jumpNodeHeightRequirement = 0.8f;
-        public float jumpModifier = 0.3f;
+        public float jumpNodeHeightRequirement = 0.8f;  
         public float jumpCheckOffset = 0.1f;
 
         [Header("Custom Behavior")]
@@ -27,15 +25,15 @@ namespace Assets.Characters {
         private Path path;
         private int currentWaypoint = 0;
         private bool isRightDirection = true;
-        private bool isNearWall = false;
-        private bool isEnemyGrounded;
-        private bool isPlayerDetected = false;
-        RaycastHit2D isGrounded;
+        private bool isNearWall = false;     
+        private bool isPlayerDetected = false;   
+        
         Seeker seeker;
         Rigidbody2D rb;
 
         public void Start()
         {
+            base.Start();
             seeker = GetComponent<Seeker>();
             rb = GetComponent<Rigidbody2D>();
 
@@ -45,7 +43,10 @@ namespace Assets.Characters {
        
 
         private void FixedUpdate()
+          
         {
+            base.FixedUpdate();
+           /* Debug.Log(CharacterIsGrounded);*/
             if (!isPlayerDetected)
             {
                 TargetInDistance();
@@ -60,7 +61,8 @@ namespace Assets.Characters {
 
             if (isNearWall)
             {
-                JumpTestas();
+                /* JumpTestas();*/
+                Jump();
             }
         }
 
@@ -87,23 +89,28 @@ namespace Assets.Characters {
 
             // See if colliding with anything
             Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset);
-            isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
+           /* isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);*/
 
             // Direction Calculation
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * speed * Time.deltaTime;
+           /* Vector2 force = direction * speed * Time.deltaTime;*/
 
             // Jump
-            if (jumpEnabled && isGrounded)
+            if (jumpEnabled /*&& isGrounded*/)
             {
                 if (direction.y > jumpNodeHeightRequirement)
                 {
-                    rb.AddForce(Vector2.up * speed * jumpModifier);
+                    /*rb.AddForce(Vector2.up * speed * jumpModifier);*/
+                    Debug.Log(CharacterIsGrounded);
+                    Jump();
+                    
                 }
             }
 
             // Movement
-            rb.AddForce(force);
+            /*rb.AddForce(force);*/
+            InputVector = direction;
+            
 
             // Next Waypoint
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
@@ -124,14 +131,6 @@ namespace Assets.Characters {
                     transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
                 }
             }
-        }
-
-        private void JumpTestas()
-        {
-            if (isEnemyGrounded)
-            {                
-                rb.AddForce(Vector2.up * 1f, ForceMode2D.Impulse);                
-            }           
         }
 
         private void CheckForWalls()
@@ -178,25 +177,6 @@ namespace Assets.Characters {
                 path = p;
                 currentWaypoint = 0;
             }
-        }
-
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag.Equals("Map"))
-            {
-                isEnemyGrounded = true;
-            }
-        }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag.Equals("Map"))
-            {
-                isEnemyGrounded = false;
-            }
-        }
+        }     
     }
-
-
 }
