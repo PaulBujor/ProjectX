@@ -20,8 +20,10 @@ namespace Assets.Characters
         [SerializeField] private float _wallJumpCooldown = 0.3f;
 
         [Header("Jumpable surfaces")]
-        [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };     
+        [SerializeField] private List<string> _jumpableTags = new List<string>() { "Map", "Platform", "Wall" };
 
+
+        private Animator animator;
 
         // Compensate for Time.deltaTime induced sluggishness
         private const int DeltaTimeCompensator = 20;
@@ -38,7 +40,8 @@ namespace Assets.Characters
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             _lastCharacterDirection = Vector2.right;
-            _audioController = GetComponent<BaseAudioController>();
+            _audioController = GetComponent<BaseAudioController>();           
+            animator = GetComponentInChildren<Animator>();
         }
 
         protected virtual void Update()
@@ -60,11 +63,22 @@ namespace Assets.Characters
             {
                 CharacterMovementIsLocked = true;
             }
+           
+
+           /* Flip();*/
         }
 
         protected void FixedUpdate()
         {
             Move();
+
+            if (animator != null)
+            {
+                //checking velocity and if character is grounded
+                animator.SetFloat("velocityX", Mathf.Abs(Rigidbody.velocity.x));
+                animator.SetBool("isGrounded", CharacterIsGrounded);                
+                animator.SetFloat("velocityY", Rigidbody.velocity.y);
+            }
         }
 
         public void Kill()
@@ -112,6 +126,7 @@ namespace Assets.Characters
                         InputVector.x * Mathf.Max(0, _movementSpeed - Mathf.Abs(Rigidbody.velocity.x)) * Time.deltaTime *
                         DeltaTimeCompensator, 0);
 
+                Flip(movement);
                
                 Rigidbody.AddForce(movement, ForceMode2D.Impulse);
             }
@@ -123,6 +138,10 @@ namespace Assets.Characters
             {
                 StartCoroutine(WallJumpCooldown());
                 Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+
+                //JumpAnimations
+                animator.SetTrigger("jump");  
+
                 if (_audioController != null)
                 {
                     _audioController.PlayOnce("Jump");
@@ -131,6 +150,18 @@ namespace Assets.Characters
             }
             
             return false;
+        }
+
+        protected void Flip(Vector2 movement)
+        {  
+                if (movement.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }
+                else if (movement.x > 0)
+                {
+                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }            
         }
 
         private IEnumerator WallJumpCooldown()

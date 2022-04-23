@@ -1,0 +1,340 @@
+fileFormatVersion: 2
+guid: de47c1a692267d14fbe9433366d148c6
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Gun_Demo_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 298
+      width: 598
+      height: 237
+    spriteID: 7039412e4150f03418e4bff7ef257404
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -81, y: -120}
+  platformSettings: []
+  mosaicLayers: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 1024
+  importedTextureHeight: 2048
+  documentSize: {x: 769, y: 1018}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 1024
+  textureActualHeight: 2048
+  spritePackingTag: 
+  resliceFromLayer: 0
+  characterMode: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Gun_Demo_1
+    spriteName: Gun_Demo_1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 71fdde75a6b016a40b1b20f92f2fa7ca
+    layerID: 0
+    mosaicPosition: {x: 4, y: 756}
+  - name: Gun_Demo_2
+    spriteName: Gun_Demo_2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 62d3589a6e34b1d4da61c0988c251791
+    layerID: 624059981
+    mosaicPosition: {x: 4, y: 543}
+  - name: Gun_Demo_3
+    spriteName: Gun_Demo_3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7039412e4150f03418e4bff7ef257404
+    layerID: -942023960
+    mosaicPosition: {x: 4, y: 298}
+  - name: Gun_Demo_4
+    spriteName: Gun_Demo_4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d241cd69197604b4da961df231131863
+    layerID: -182509073
+    mosaicPosition: {x: 626, y: 756}
+  - name: Gun_Demo_5
+    spriteName: Gun_Demo_5
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 897bdb799133a5e408b4c6533e8f86f9
+    layerID: -1748593014
+    mosaicPosition: {x: 4, y: 4}
+  - name: Gun_Demo_6
+    spriteName: Gun_Demo_6
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 05d6301eefdf77748b24e4db52e165a1
+    layerID: -1345308487
+    mosaicPosition: {x: 4, y: 1361}
+  - name: Gun_Demo_7
+    spriteName: Gun_Demo_7
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5ea4432e756958641aa2634186535db6
+    layerID: 1383574868
+    mosaicPosition: {x: 213, y: 1685}
+  - name: Eye_R_00
+    spriteName: Eye_R_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4e58d8e723a07864cbaf831ac7dce367
+    layerID: -69876573
+    mosaicPosition: {x: 355, y: 1196}
+  - name: Eye_L_00
+    spriteName: Eye_L_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a239096a38155d9468a269cf4518b2e6
+    layerID: -69877003
+    mosaicPosition: {x: 742, y: 298}
+  - name: Face_00
+    spriteName: Face_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a1764fdd5e9be36409585a3280d3dddf
+    layerID: -720320508
+    mosaicPosition: {x: 213, y: 925}
+  - name: Leg_L_02
+    spriteName: Leg_L_02
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 739253209f89d1b4c9bd8a0df19461d8
+    layerID: 428282796
+    mosaicPosition: {x: 781, y: 201}
+  - name: Leg_L_01
+    spriteName: Leg_L_01
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 83a6e70a9c14585458a0991844d4ab3d
+    layerID: -1137801145
+    mosaicPosition: {x: 898, y: 543}
+  - name: Leg_L_00
+    spriteName: Leg_L_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 62d46272c1124534c8bd6929ed459334
+    layerID: 1591082210
+    mosaicPosition: {x: 901, y: 298}
+  - name: Hand_L_01
+    spriteName: Hand_L_01
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dac8ada33a1ab004b9602f2ad7509691
+    layerID: 2021937630
+    mosaicPosition: {x: 4, y: 1778}
+  - name: Hand_L_10
+    spriteName: Hand_L_10
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 324789927ad7eaf4499e8095775c7366
+    layerID: -706945724
+    mosaicPosition: {x: 364, y: 1752}
+  - name: Hand_L_00
+    spriteName: Hand_L_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a181b5bb1cac9594088f2fca553c63bf
+    layerID: 2021937631
+    mosaicPosition: {x: 213, y: 1196}
+  - name: Body_00
+    spriteName: Body_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5cd4717f662c21e4481d1bce67491f3b
+    layerID: 1173028475
+    mosaicPosition: {x: 4, y: 925}
+  - name: Hand_R_06
+    spriteName: Hand_R_06
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 77d2b35c5ea7c294c909369f1da83b71
+    layerID: -1133217
+    mosaicPosition: {x: 364, y: 1378}
+  - name: Hand_R_05
+    spriteName: Hand_R_05
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8b5090f4af1886c4cbc3849501b2a12c
+    layerID: -1133216
+    mosaicPosition: {x: 213, y: 1532}
+  - name: Hand_R_04
+    spriteName: Hand_R_04
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 26642e0356e574a47a47a73fa5059eef
+    layerID: -1133215
+    mosaicPosition: {x: 592, y: 543}
+  - name: Hand_R_03
+    spriteName: Hand_R_03
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 560b89c8845aa3a43bccc520fb27228c
+    layerID: -1133222
+    mosaicPosition: {x: 364, y: 1924}
+  - name: Hand_R_02
+    spriteName: Hand_R_02
+    isGroup: 0
+    parentIndex: -1
+    spriteID: aa7f665c3ff5c09418d38edb2307a48e
+    layerID: -1133221
+    mosaicPosition: {x: 213, y: 1378}
+  - name: Hand_R_01
+    spriteName: Hand_R_01
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3012ac1b88f17ca4ab9f8ff19fce6ef3
+    layerID: -1133220
+    mosaicPosition: {x: 781, y: 4}
+  - name: Hand_R_10
+    spriteName: Hand_R_10
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 79b66c90736f35a429b03dde153d14bf
+    layerID: 1564950722
+    mosaicPosition: {x: 213, y: 1862}
+  - name: Hand_R_00
+    spriteName: Hand_R_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8f31c45ba9a59fb499e82a1863a47361
+    layerID: -1133219
+    mosaicPosition: {x: 748, y: 543}
+  - name: Leg_R_02
+    spriteName: Leg_R_02
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 16e3372307c706a438ab88c7a4e36c91
+    layerID: 428283622
+    mosaicPosition: {x: 479, y: 925}
+  - name: Leg_R_01
+    spriteName: Leg_R_01
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c16914710d7cda948bd669c5e611feec
+    layerID: -1137800319
+    mosaicPosition: {x: 364, y: 1532}
+  - name: Leg_R_00
+    spriteName: Leg_R_00
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0e39f1b66153b7d419830d52a4bc793b
+    layerID: 1591083036
+    mosaicPosition: {x: 610, y: 298}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+  generateGOHierarchy: 0
+  textureAssetName: 2D_weapon Texture
+  prefabAssetName: 2D_weapon Prefab
+  spriteLibAssetName: 2D_weapon Sprite Lib
+  secondarySpriteTextures: []
