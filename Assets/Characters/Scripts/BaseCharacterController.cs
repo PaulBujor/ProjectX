@@ -40,8 +40,7 @@ namespace Assets.Characters
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             _lastCharacterDirection = Vector2.right;
-            _audioController = GetComponent<BaseAudioController>();
-            /*animator = GetComponentInChildren(typeof(Animator)) as Animator;*/
+            _audioController = GetComponent<BaseAudioController>();           
             animator = GetComponentInChildren<Animator>();
         }
 
@@ -64,19 +63,22 @@ namespace Assets.Characters
             {
                 CharacterMovementIsLocked = true;
             }
-            if (animator != null)
-            {
-                //checking velocity and if character is grounded
-                animator.SetFloat("velocity", Mathf.Abs(Rigidbody.velocity.x));
-                animator.SetBool("isGrounded", CharacterIsGrounded);
-            }
+           
 
            /* Flip();*/
         }
 
         protected void FixedUpdate()
         {
-            Move();            
+            Move();
+
+            if (animator != null)
+            {
+                //checking velocity and if character is grounded
+                animator.SetFloat("velocityX", Mathf.Abs(Rigidbody.velocity.x));
+                animator.SetBool("isGrounded", CharacterIsGrounded);                
+                animator.SetFloat("velocityY", Rigidbody.velocity.y);
+            }
         }
 
         public void Kill()
@@ -136,6 +138,10 @@ namespace Assets.Characters
             {
                 StartCoroutine(WallJumpCooldown());
                 Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+
+                //JumpAnimations
+                animator.SetTrigger("jump");  
+
                 if (_audioController != null)
                 {
                     _audioController.PlayOnce("Jump");
@@ -147,10 +153,7 @@ namespace Assets.Characters
         }
 
         protected void Flip(Vector2 movement)
-        {
-
-            Debug.Log(_lastCharacterDirection);
-
+        {  
                 if (movement.x < 0)
                 {
                     transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
@@ -158,8 +161,7 @@ namespace Assets.Characters
                 else if (movement.x > 0)
                 {
                     transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                }
-            
+                }            
         }
 
         private IEnumerator WallJumpCooldown()
