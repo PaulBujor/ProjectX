@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1383104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OriginPoint
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,8 +39,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2972304219489140342}
-  m_Layer: 0
-  m_Name: DragonLR
+  m_Layer: 7
+  m_Name: DragonLR Holder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2972304219489140341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.24, y: -1.58, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2972304220440085629}
@@ -74,9 +74,10 @@ GameObject:
   - component: {fileID: 2972304220440085617}
   - component: {fileID: 2972304220440085616}
   - component: {fileID: 13378464}
-  m_Layer: 0
-  m_Name: Basic
-  m_TagString: Untagged
+  - component: {fileID: 3615709481805313707}
+  m_Layer: 7
+  m_Name: Dragon
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2972304220440085628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0398, y: 0.0102, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.004, y: 1.008, z: 1}
   m_Children:
   - {fileID: 1383104}
@@ -207,6 +208,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 5
-  isRightDirection: 0
   rcDistance: 0.7
-  rcOriginPoint: {fileID: 0}
+  rcOriginPoint: {fileID: 1383104}
+--- !u!114 &3615709481805313707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2972304220440085628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0e966bdc57fdb4f9c35fa06cfa0a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 3

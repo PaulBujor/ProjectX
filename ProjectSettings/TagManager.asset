@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Platform
   - Wall
+  - EndLevelArea
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Ground
   - Enemy
   - Player
-  - 
-  - 
+  - Spawn
+  - EndLevelArea
   - 
   - 
   - 
@@ -42,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Spawn
+    uniqueID: 3364773641
+    locked: 0
   - name: Background
     uniqueID: 1594368283
     locked: 0

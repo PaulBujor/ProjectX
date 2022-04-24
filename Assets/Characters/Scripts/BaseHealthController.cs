@@ -1,5 +1,6 @@
 using Assets.Audio.Scripts;
 using UnityEngine;
+using System;
 
 namespace Assets.Characters.Scripts
 {
@@ -9,6 +10,7 @@ namespace Assets.Characters.Scripts
         [SerializeField] private int _health = 3;
 
         private BaseAudioController _audioController;
+        
 
         private void Start()
         {
@@ -26,6 +28,7 @@ namespace Assets.Characters.Scripts
 
             if (_health <= 0)
             {
+                
                 OnDeath();
                 if (_audioController != null)
                 {
@@ -42,5 +45,5 @@ namespace Assets.Characters.Scripts
         }
 
         protected abstract void OnDeath();
-    }
+    }  
 }

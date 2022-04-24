@@ -140,7 +140,10 @@ namespace Assets.Characters
                 Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 
                 //JumpAnimations
-                animator.SetTrigger("jump");  
+                if (animator != null)
+                {
+                    animator.SetTrigger("jump");
+                }
 
                 if (_audioController != null)
                 {
@@ -176,7 +179,7 @@ namespace Assets.Characters
             if (_jumpableTags.Contains(collision.gameObject.tag))
             {
                 CharacterIsGrounded = true;
-            }            
+            }  
         }
 
         private void OnCollisionExit2D(Collision2D collision)
