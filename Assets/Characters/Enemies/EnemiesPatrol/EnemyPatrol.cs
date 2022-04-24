@@ -41,7 +41,7 @@ namespace Assets {
 
             if (hit.collider != null)
             {
-                if (hit.transform.tag == "Wall")
+                if (hit.transform.tag == "Wall" || hit.transform.tag == "Map")
                 {
                /*     Debug.Log(hit.transform.tag);*/
                     isRightDirection = !isRightDirection;
@@ -61,14 +61,6 @@ namespace Assets {
             {
                isRightDirection = !isRightDirection;
                _spriteRenderer.flipX = !isRightDirection;                
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag.Equals("Player"))
-            {
-                Debug.Log("Blet");
             }
         }
     }
