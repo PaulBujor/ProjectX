@@ -31,7 +31,7 @@ namespace Assets.Characters {
         Seeker seeker;
         Rigidbody2D rb;
 
-        public void Start()
+        public new void Start()
         {
             base.Start();
             seeker = GetComponent<Seeker>();
@@ -42,7 +42,7 @@ namespace Assets.Characters {
 
        
 
-        private void FixedUpdate()
+        private new void FixedUpdate()
           
         {
             base.FixedUpdate();

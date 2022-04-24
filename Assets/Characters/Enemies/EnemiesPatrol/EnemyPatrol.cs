@@ -64,9 +64,12 @@ namespace Assets {
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            /*Debug.Log(collision.gameObject.tag);*/
+            if (collision.gameObject.tag.Equals("Player"))
+            {
+                Debug.Log("Blet");
+            }
         }
     }
 }
