@@ -7,6 +7,6 @@ public class LevelSelector : MonoBehaviour
 {
     public void ChangeLevelTo(string levelName)
     {
-        SceneManager.LoadScene(levelName);
+        SimpleSceneFader.ChangeSceneWithFade(levelName);
     }
 }
