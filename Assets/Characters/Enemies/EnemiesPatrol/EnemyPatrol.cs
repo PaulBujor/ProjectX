@@ -12,6 +12,7 @@ namespace Assets {
         private bool isRightDirection = false;
 
         [Header("Raycast detection")]
+        [SerializeField] public bool checkForWalls = true;
         [SerializeField] private float rcDistance = 0.7f;                
         [SerializeField] private Transform rcOriginPoint;    
                 
@@ -27,7 +28,10 @@ namespace Assets {
         {
             MoveToDirection(isRightDirection);
 
-            CheckForWalls();
+            if (checkForWalls)
+            {
+                CheckForWalls();
+            }
             CheckForGroundEnd();
         }
 
