@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Wall
   - EndLevelArea
+  - SceneFader
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Spawn
   - EndLevelArea
-  - 
+  - Camera
   - 
   - 
   - 

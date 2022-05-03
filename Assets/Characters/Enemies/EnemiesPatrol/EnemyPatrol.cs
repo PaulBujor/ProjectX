@@ -35,7 +35,7 @@ namespace Assets {
         {
             Vector3 rcDirection = (isRightDirection) ? Vector3.right : Vector3.left;
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position + rcDirection * rcDistance - new Vector3(0f, 0.01f, 0f), rcDirection, 0.1f);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + rcDirection * rcDistance - new Vector3(0f, 1f, 0f), rcDirection, 0.1f);
 
             Debug.DrawRay(transform.position, rcDirection * rcDistance);
 
@@ -59,6 +59,7 @@ namespace Assets {
 
             if (hit == false || hit.collider.CompareTag("Player"))
             {
+                
                isRightDirection = !isRightDirection;
                _spriteRenderer.flipX = !isRightDirection;                
             }
