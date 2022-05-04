@@ -46,7 +46,7 @@ namespace Assets.Characters {
           
         {
             base.FixedUpdate();
-           /* Debug.Log(CharacterIsGrounded);*/
+      
             if (!isPlayerDetected)
             {
                 TargetInDistance();
@@ -60,8 +60,7 @@ namespace Assets.Characters {
             CheckForWalls();
 
             if (isNearWall)
-            {
-                /* JumpTestas();*/
+            {              
                 Jump();
             }
         }
@@ -93,17 +92,14 @@ namespace Assets.Characters {
 
             // Direction Calculation
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-           /* Vector2 force = direction * speed * Time.deltaTime;*/
+          
 
             // Jump
-            if (jumpEnabled /*&& isGrounded*/)
+            if (jumpEnabled)
             {
                 if (direction.y > jumpNodeHeightRequirement)
-                {
-                    /*rb.AddForce(Vector2.up * speed * jumpModifier);*/
-                    Debug.Log(CharacterIsGrounded);
-                    Jump();
-                    
+                {                
+                    Jump();                    
                 }
             }
 
