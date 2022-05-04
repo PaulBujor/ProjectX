@@ -6,8 +6,7 @@ using Pathfinding;
 namespace Assets.Characters {
     public class EnemyAI : BaseCharacterController
     {
-        [Header("Pathfinding")]
-        public Transform target;
+        [Header("Pathfinding")]        
         public float activateDistance = 50f;
         public float pathUpdateSeconds = 0.5f;
         public float rcDistance = 3f;
@@ -26,8 +25,8 @@ namespace Assets.Characters {
         private int currentWaypoint = 0;
         private bool isRightDirection = true;
         private bool isNearWall = false;     
-        private bool isPlayerDetected = false;   
-        
+        private bool isPlayerDetected = false;
+        private GameObject player;
         Seeker seeker;
         Rigidbody2D rb;
 
@@ -36,6 +35,7 @@ namespace Assets.Characters {
             base.Start();
             seeker = GetComponent<Seeker>();
             rb = GetComponent<Rigidbody2D>();
+            player = GameObject.FindGameObjectWithTag("Player");
 
             InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
         }
@@ -70,7 +70,7 @@ namespace Assets.Characters {
         {
             if (followEnabled && isPlayerDetected && seeker.IsDone())
             {
-                seeker.StartPath(rb.position, target.position, OnPathComplete);
+                seeker.StartPath(rb.position, player.transform.position, OnPathComplete);
             }
         }
 
@@ -164,7 +164,7 @@ namespace Assets.Characters {
 
         private void TargetInDistance()
         {
-            if(Vector2.Distance(transform.position, target.transform.position) < activateDistance)
+            if(Vector2.Distance(transform.position, player.transform.position) < activateDistance)
             {
                 isPlayerDetected = true;
             }
