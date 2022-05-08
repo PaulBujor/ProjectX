@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.LevelManager;
 using UnityEngine;
 
-public class EndLevel : MonoBehaviour
+namespace Assets.Environment
 {
-    [Header("Load next scene")]
-    [SerializeField] public string scene;
-
-
-    private void Start()
+    public class EndLevel : MonoBehaviour
     {
-      var levelManager =   gameObject.GetComponent<LevelManagerWrite>();
-        levelManager.StartLevel();
-    }
-    //TODO add what to load
+        [Header("Load next scene")]
+        [SerializeField] public string scene;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag.Equals("Player"))
+        private LevelManagerWrite _levelManager;
+
+        private void Start()
         {
-            Debug.Log(collision.gameObject.tag);
-            var levelManager = gameObject.GetComponent<LevelManagerWrite>();
-            levelManager.EndLevel(true);
+            _levelManager = GetComponentInParent<LevelManagerWrite>();
+        }
+        //TODO add what to load
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag.Equals("Player"))
+            {
+                Debug.Log(collision.gameObject.tag);
+                _levelManager.EndLevel(true);
+            }
         }
     }
 }
