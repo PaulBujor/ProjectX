@@ -254,3 +254,16 @@ MonoBehaviour:
   - {fileID: 3863702102530881048}
   isFollowingPlayer: 1
   detectionRange: 25
+--- !u!114 &5588726664319369346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614141536874817949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0e966bdc57fdb4f9c35fa06cfa0a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 3
