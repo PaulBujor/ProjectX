@@ -1,51 +1,59 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManagerWrite : MonoBehaviour
 {
-
     private const int TwoStarTime = 6*60;
     private const int ThreeStarTime = 3*60;
 
-    public void StartLevel(string level)
+    private static readonly string LevelName = SceneManager.GetActiveScene().name.ToLower();
+
+    public void StartLevel()
     {
+        Debug.Log(LevelName);
         var startTime = DateTime.Now;
-        PlayerPrefs.SetString(level.ToLower() + "StartTime", startTime.ToString());
+        PlayerPrefs.SetString(LevelName + "StartTime", startTime.ToString());
         PlayerPrefs.Save();
     }
 
-    public void EndLevel(string level)
+    public void EndLevel(bool success)
     {
+       
         var endTime = DateTime.Now;
-        PlayerPrefs.SetString(level.ToLower() + "EndTime", endTime.ToString());
+        PlayerPrefs.SetString(LevelName + "EndTime", endTime.ToString());
         PlayerPrefs.Save();
-        CalculateScore(level.ToLower());
+        if (success)
+        {
+            CalculateScore();
+        }
     }
 
-    private void CalculateScore(string level)
+    private void CalculateScore()
     {
-        var startTime = DateTime.Parse(PlayerPrefs.GetString(level + "StartTime"));
-        var endTime = DateTime.Parse(PlayerPrefs.GetString(level + "EndTime"));
+        var startTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "StartTime"));
+        var endTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "EndTime"));
         var finishTime = endTime - startTime;
 
         // More than 5 minutes -> 1 star
         if (finishTime.TotalSeconds > TwoStarTime)
         {
-            PlayerPrefs.SetInt(level + "Score", 1);
+            PlayerPrefs.SetInt(LevelName + "Score", 1);
         }
 
         // More than 2 less than 5 minutes -> 2 stars
         if (finishTime.TotalSeconds > ThreeStarTime && finishTime.TotalSeconds <= TwoStarTime)
         {
-            PlayerPrefs.SetInt(level + "Score", 2);
+            PlayerPrefs.SetInt(LevelName + "Score", 2);
         }
 
         // Less than 2 minutes -> 3 stars
         if (finishTime.TotalSeconds <= ThreeStarTime)
         {
-            PlayerPrefs.SetInt(level + "Score", 3);
+            PlayerPrefs.SetInt(LevelName + "Score", 3);
         }
 
         PlayerPrefs.Save();
