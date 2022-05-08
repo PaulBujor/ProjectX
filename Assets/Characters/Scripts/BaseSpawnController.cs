@@ -10,10 +10,10 @@ public class BaseSpawnController : MonoBehaviour
     private Vector2 spawnPoint;
   
 
-    void Start()
+    protected virtual void Start()
     {
         spawnPoint = transform.position;
-        Spawn();
+        
     }   
 
     public GameObject Spawn()

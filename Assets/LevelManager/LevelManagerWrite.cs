@@ -10,7 +10,12 @@ public class LevelManagerWrite : MonoBehaviour
     private const int TwoStarTime = 6*60;
     private const int ThreeStarTime = 3*60;
 
-    private static readonly string LevelName = SceneManager.GetActiveScene().name.ToLower();
+    private string LevelName;
+
+    private void Start()
+    {
+       LevelName = SceneManager.GetActiveScene().name.ToLower();
+    }
 
     public void StartLevel()
     {

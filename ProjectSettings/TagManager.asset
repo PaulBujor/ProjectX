@@ -9,6 +9,8 @@ TagManager:
   - Platform
   - Wall
   - EndLevelArea
+  - SceneFader
+  - DeadlyTrap
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - Player
   - Spawn
   - EndLevelArea
-  - 
-  - 
+  - Camera
+  - Birds
   - 
   - 
   - 
