@@ -30,7 +30,7 @@ namespace Assets.Characters
         private Vector2 _lastCharacterDirection;
         private BaseAudioController _audioController;
         private bool _characterIsDead = false;
-        private bool isJumpCooldown = false;
+        private bool _isJumpCooldown = false;
         protected bool CharacterIsGrounded;
         protected Rigidbody2D Rigidbody;
         protected Vector2 InputVector;
@@ -49,7 +49,7 @@ namespace Assets.Characters
             SaveLastDirection();
             if (_audioController != null)
             {
-                if (CharacterIsGrounded && Rigidbody.velocity != Vector2.zero && InputVector != Vector2.zero)
+                if (CharacterIsGrounded && Rigidbody.velocity != Vector2.zero)
                 {
                     _audioController.PlayLooping("Walk");
                 }
@@ -65,7 +65,7 @@ namespace Assets.Characters
             }
            
 
-           /* Flip();*/
+            /* Flip();*/
         }
 
         protected void FixedUpdate()
@@ -134,7 +134,7 @@ namespace Assets.Characters
 
         protected bool Jump()
         {
-            if (CharacterIsGrounded && !isJumpCooldown)
+            if (CharacterIsGrounded && !_isJumpCooldown)
             {
                 StartCoroutine(WallJumpCooldown());
                 Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
@@ -169,9 +169,9 @@ namespace Assets.Characters
 
         private IEnumerator WallJumpCooldown()
         {
-            isJumpCooldown = true;
+            _isJumpCooldown = true;
             yield return new WaitForSeconds(_wallJumpCooldown);
-            isJumpCooldown = false;
+            _isJumpCooldown = false;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
