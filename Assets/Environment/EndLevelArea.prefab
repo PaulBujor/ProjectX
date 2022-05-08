@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5251019231610397023}
   - component: {fileID: 206082842}
   - component: {fileID: 206082839}
+  - component: {fileID: 6690826589206653293}
   m_Layer: 0
   m_Name: Area
   m_TagString: EndLevelArea
@@ -145,6 +146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: 
+--- !u!114 &6690826589206653293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858533033099294493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87968c9cbdff24449ef778582003c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4920653471178879707
 GameObject:
   m_ObjectHideFlags: 0
