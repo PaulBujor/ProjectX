@@ -38,7 +38,9 @@ namespace Assets.Characters.Player.Scripts
         private IEnumerator EndGameTimeout()
         {
             yield return new WaitForSeconds(2);
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
+#endif
         }
 
         private IEnumerator DamageCooldown()
