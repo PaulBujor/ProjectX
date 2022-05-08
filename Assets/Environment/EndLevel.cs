@@ -7,11 +7,11 @@ public class EndLevel : MonoBehaviour
     [Header("Load next scene")]
     [SerializeField] public string scene;
 
+    private GameObject LevelManager;
 
     private void Start()
     {
-      var levelManager =   gameObject.GetComponent<LevelManagerWrite>();
-        levelManager.StartLevel();
+      LevelManager = GameObject.Find("LevelManager");
     }
     //TODO add what to load
 
@@ -20,8 +20,7 @@ public class EndLevel : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Debug.Log(collision.gameObject.tag);
-            var levelManager = gameObject.GetComponent<LevelManagerWrite>();
-            levelManager.EndLevel(true);
+            LevelManager.GetComponent<LevelManagerWrite>().EndLevel(true);
         }
     }
 }

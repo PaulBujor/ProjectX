@@ -11,13 +11,13 @@ public class LevelManagerWrite : MonoBehaviour
     private const int ThreeStarTime = 3*60;
 
     private string LevelName;
-
-    private void Start()
+    void Start()
     {
        LevelName = SceneManager.GetActiveScene().name.ToLower();
+       StartLevel();
     }
 
-    public void StartLevel()
+    private void StartLevel()
     {
         Debug.Log(LevelName);
         var startTime = DateTime.Now;
@@ -34,7 +34,10 @@ public class LevelManagerWrite : MonoBehaviour
         if (success)
         {
             CalculateScore();
+            Debug.Log($"Obtained score: {PlayerPrefs.GetInt(LevelName)}");
         }
+
+        GetComponent<LevelSwitcher>().ChangeLevelWithFade("LevelSelector");
     }
 
     private void CalculateScore()
