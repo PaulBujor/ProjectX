@@ -9,14 +9,14 @@ public class LevelManagerWrite : MonoBehaviour
     private const int TwoStarTime = 6*60;
     private const int ThreeStarTime = 3*60;
 
-    public void StartTimer(string level)
+    public void StartLevel(string level)
     {
         var startTime = DateTime.Now;
         PlayerPrefs.SetString(level.ToLower() + "StartTime", startTime.ToString());
         PlayerPrefs.Save();
     }
 
-    public void EndTimer(string level)
+    public void EndLevel(string level)
     {
         var endTime = DateTime.Now;
         PlayerPrefs.SetString(level.ToLower() + "EndTime", endTime.ToString());
