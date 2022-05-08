@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManagerRead : MonoBehaviour
+namespace Assets.LevelManager
 {
-    public int GetScore(string level)
+    public class LevelManagerRead : MonoBehaviour
     {
-        return PlayerPrefs.GetInt(level.ToLower());
+        public int GetScore(string level)
+        {
+            return PlayerPrefs.GetInt(level.ToLower() + "Score");
+        }
     }
 }

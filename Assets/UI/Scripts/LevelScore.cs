@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.LevelManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,14 @@ public class LevelScore : MonoBehaviour
     private const string _star3 = "StarRight";
 
     public int Score = 0;
+    public string LevelName = "Level 1";
 
     private const int _maxScore = 3;
 
     void Start()
     {
+        Score = FindObjectOfType<LevelManagerRead>().GetScore(LevelName);
+
         if (Score == 0)
         {
             return;

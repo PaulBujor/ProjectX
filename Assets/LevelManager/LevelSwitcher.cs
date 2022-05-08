@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelSwitcher : MonoBehaviour
+namespace Assets.LevelManager
 {
-    public void ChangeLevelWithFade(string levelName)
+    public class LevelSwitcher : MonoBehaviour
     {
 
-        SimpleSceneFader.ChangeSceneWithFade(levelName);
+        public void ChangeLevelWithFade(string levelName)
+        {
 
-    }
-    public void ChangeLevelWithoutFade(string levelName)
-    {
+            SimpleSceneFader.ChangeSceneWithFade(levelName);
 
-        SceneManager.LoadScene(levelName);
+        }
+        public void ChangeLevelWithoutFade(string levelName)
+        {
+
+            SceneManager.LoadScene(levelName);
+        }
     }
 }
