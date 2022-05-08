@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - EndLevelArea
   - SceneFader
+  - DeadlyTrap
   layers:
   - Default
   - TransparentFX

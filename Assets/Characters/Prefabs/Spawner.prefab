@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4470731623210216148}
   - component: {fileID: 4470731623210216149}
-  - component: {fileID: 4470731623210216150}
+  - component: {fileID: 7315044565079102363}
   m_Layer: 5
   m_Name: Spawner
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4470731623210216150
+--- !u!114 &7315044565079102363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4470731623210216147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fc057bec3bba5499577c93d0259582, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ba9b337eab855b468e93b14cbbf9ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2972304219489140341, guid: 5e01651e9310c4d4b9f28db24dc22a34, type: 3}
+  prefab: {fileID: 0}
+  isRespawning: 1
+  respawnTimer: 4

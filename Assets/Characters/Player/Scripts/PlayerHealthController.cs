@@ -70,6 +70,11 @@ namespace Assets.Characters.Player.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.gameObject.CompareTag("DeadlyTrap"))
+            {
+                TakeDamage(3);
+            }
+
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 if (!_isImmune)
@@ -77,6 +82,14 @@ namespace Assets.Characters.Player.Scripts
                     TakeDamage();
                     StartCoroutine(DamageCooldown());
                 }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("DeadlyTrap"))
+            {
+                TakeDamage(3);
             }
         }
     }

@@ -54,8 +54,7 @@ namespace Assets.Weapons.Scripts
 
         private void OnShoot()
         {
-            var shootingDirection = GetComponent<BaseCharacterController>()?.GetLastDirection() ?? Vector2.right;
-            Debug.Log(shootingDirection);
+            var shootingDirection = GetComponent<BaseCharacterController>()?.GetLastDirection() ?? Vector2.right;            
             var projectile = Instantiate(_projectile, transform.position, transform.rotation);
             var projectileController = projectile.GetComponent<BaseProjectileController>();
             projectileController.tag = tag;

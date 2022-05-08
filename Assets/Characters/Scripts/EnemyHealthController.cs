@@ -11,7 +11,10 @@ public class EnemyHealthController : BaseHealthController
 
     protected override void OnDeath()
     {
-      OnCharacterDeath.Invoke();
+        if (OnCharacterDeath != null)
+        {
+            OnCharacterDeath.Invoke();
+        }
         Destroy(gameObject);
     }
 

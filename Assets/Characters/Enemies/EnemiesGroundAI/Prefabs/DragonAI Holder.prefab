@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972304219489140341, guid: 5e01651e9310c4d4b9f28db24dc22a34, type: 3}
       propertyPath: m_Name
-      value: DragonAI Variant
+      value: DragonAI Holder
       objectReference: {fileID: 0}
     - target: {fileID: 2972304219489140341, guid: 5e01651e9310c4d4b9f28db24dc22a34, type: 3}
       propertyPath: m_Layer
@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972304220440085628, guid: 5e01651e9310c4d4b9f28db24dc22a34, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2972304220440085629, guid: 5e01651e9310c4d4b9f28db24dc22a34, type: 3}
       propertyPath: m_LocalScale.x
@@ -144,7 +144,6 @@ MonoBehaviour:
   - Map
   - Platform
   - Wall
-  target: {fileID: 0}
   activateDistance: 20
   pathUpdateSeconds: 0.5
   rcDistance: 3

@@ -9,8 +9,9 @@ public class Spawner : BaseSpawnController
     [SerializeField] public float respawnTimer = 4f;
 
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         Respawn();
     }
 
