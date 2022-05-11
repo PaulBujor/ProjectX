@@ -29,10 +29,13 @@ namespace Assets.Characters.Player.Scripts
             var baseCharacterController = GetComponent<BaseCharacterController>();
             if (baseCharacterController != null)
             {
+
                 baseCharacterController.Kill();
+
             }
 
             StartCoroutine(EndGameTimeout());
+
         }
 
         private IEnumerator EndGameTimeout()
@@ -74,7 +77,7 @@ namespace Assets.Characters.Player.Scripts
         {
             if (collision.gameObject.CompareTag("DeadlyTrap"))
             {
-                TakeDamage(3);
+                TakeDamage(10);
             }
 
             if (collision.gameObject.CompareTag("Enemy"))
@@ -91,7 +94,7 @@ namespace Assets.Characters.Player.Scripts
         {
             if (collision.gameObject.CompareTag("DeadlyTrap"))
             {
-                TakeDamage(3);
+                TakeDamage(10);
             }
         }
     }
