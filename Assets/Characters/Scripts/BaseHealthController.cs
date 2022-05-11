@@ -12,7 +12,7 @@ namespace Assets.Characters.Scripts
         private BaseAudioController _audioController;
         
 
-        private void Start()
+        protected virtual void Start()
         {
             _audioController = GetComponent<BaseAudioController>();
             if (_health <= 0)
@@ -26,7 +26,7 @@ namespace Assets.Characters.Scripts
             _health -= damage;
             Debug.Log($"{this.GetType().Name} took {damage} HP damage - Health: {_health}");
 
-            if (_health <= 0)
+            if (_health == 0)
             {
                 
                 OnDeath();
