@@ -77,7 +77,7 @@ namespace Assets.Characters.Player.Scripts
         {
             if (collision.gameObject.CompareTag("DeadlyTrap"))
             {
-                TakeDamage(3);
+                TakeDamage(10);
             }
 
             if (collision.gameObject.CompareTag("Enemy"))
@@ -94,7 +94,7 @@ namespace Assets.Characters.Player.Scripts
         {
             if (collision.gameObject.CompareTag("DeadlyTrap"))
             {
-                TakeDamage(3);
+                TakeDamage(10);
             }
         }
     }
