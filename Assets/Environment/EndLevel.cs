@@ -21,7 +21,7 @@ namespace Assets.Environment
             if (collision.gameObject.tag.Equals("Player"))
             {
                 Debug.Log(collision.gameObject.tag);
-                _levelManager.EndLevel(true);
+                _levelManager.EndLevel(false);
             }
         }
     }

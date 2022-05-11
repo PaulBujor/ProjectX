@@ -34,9 +34,13 @@ namespace Assets.LevelManager
             {
                 CalculateScore();
                 Debug.Log($"Obtained score: {PlayerPrefs.GetInt(LevelName+"Score")}");
+                FindObjectOfType<LevelSwitcher>().ChangeLevelWithFade("LevelSelector");
+            }
+            else
+            {
+                FindObjectOfType<LevelSwitcher>().ChangeLevelWithoutFade("OverlayMenu");
             }
 
-            FindObjectOfType<LevelSwitcher>().ChangeLevelWithFade("LevelSelector");
         }
 
         private void CalculateScore()

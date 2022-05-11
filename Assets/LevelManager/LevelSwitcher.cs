@@ -17,5 +17,14 @@ namespace Assets.LevelManager
 
             SceneManager.LoadScene(levelName);
         }
+
+        public void ReloadCurrentScene()
+        {
+            var levelName = SceneManager.GetActiveScene().name;
+            //var levelName = "level 1";
+            //SimpleSceneFader.ChangeSceneWithFade(levelName);
+            SceneManager.LoadScene(levelName);
+
+        }
     }
 }
