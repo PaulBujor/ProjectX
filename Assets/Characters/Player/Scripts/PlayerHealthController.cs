@@ -29,10 +29,13 @@ namespace Assets.Characters.Player.Scripts
             var baseCharacterController = GetComponent<BaseCharacterController>();
             if (baseCharacterController != null)
             {
+
                 baseCharacterController.Kill();
+
             }
 
             StartCoroutine(EndGameTimeout());
+
         }
 
         private IEnumerator EndGameTimeout()

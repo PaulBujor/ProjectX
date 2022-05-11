@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 2972304220440085616}
   - component: {fileID: 13378464}
   - component: {fileID: 3615709481805313707}
+  - component: {fileID: 218968477}
   m_Layer: 7
   m_Name: Dragon
   m_TagString: Enemy
@@ -90,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2972304220440085628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -11.78, y: 0, z: 0}
   m_LocalScale: {x: 1.004, y: 1.008, z: 1}
   m_Children:
   - {fileID: 1383104}
@@ -224,3 +225,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 3
+  _animator: {fileID: 218968477}
+  _animationClips: []
+--- !u!95 &218968477
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2972304220440085628}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00b39c18e067262499dfd9e95799119a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
