@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3863702100954393086, guid: 5a957cd94a466c24f9fc45932ccc464d, type: 3}
   isRespawning: 1
-  respawnTimer: 4
+  respawnTimer: 8
 --- !u!1 &6865559463905083436
 GameObject:
   m_ObjectHideFlags: 0

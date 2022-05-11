@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Audio.Scripts;
 
 using UnityEngine;
+// ReSharper disable Unity.PreferAddressByIdToGraphicsParams
 
 namespace Assets.Characters
 {
