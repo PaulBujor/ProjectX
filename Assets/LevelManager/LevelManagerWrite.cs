@@ -9,9 +9,12 @@ namespace Assets.LevelManager
     /// </summary>
     public class LevelManagerWrite : MonoBehaviour
     {
-        private const int TwoStarTime = 6*60;
-        private const int ThreeStarTime = 3*60;
-    
+        private LevelManagerRead _levelManagerRead;
+        private LevelSwitcher _levelManagerSwitcher;
+
+        private const int TwoStarTime = 6 * 60;
+        private const int ThreeStarTime = 3 * 60;
+
         private string LevelName;
 
         void Awake()
@@ -19,12 +22,7 @@ namespace Assets.LevelManager
             LevelName = SceneManager.GetActiveScene().name.ToLower();
         }
 
-        void Start()
-        {
-            StartLevel();
-        }
-
-        private void StartLevel()
+        public void StartLevel()
         {
             var startTime = DateTime.Now;
             PlayerPrefs.SetString(LevelName + "StartTime", startTime.ToString());
@@ -34,50 +32,67 @@ namespace Assets.LevelManager
 
         public void EndLevel(bool success)
         {
-       
             var endTime = DateTime.Now;
             PlayerPrefs.SetString(LevelName + "EndTime", endTime.ToString());
             PlayerPrefs.Save();
             if (success)
             {
-                CalculateScore();
-                Debug.Log($"Obtained score: {PlayerPrefs.GetInt(LevelName+"Score")}");
-                FindObjectOfType<LevelSwitcher>().ChangeLevelWithFade("LevelSelector");
+                SaveScore();
+                //Debug.Log($"Obtained score: {PlayerPrefs.GetInt(LevelName + "Score")}");
+                Debug.Log($"Obtained score: {_levelManagerRead.GetScore(LevelName)}");
+                _levelManagerSwitcher.ChangeLevelWithFade("LevelSelector");
             }
             else
             {
-                FindObjectOfType<LevelSwitcher>().ChangeLevelWithoutFade("OverlayMenu");
+                _levelManagerSwitcher.ChangeLevelWithoutFade("MainMenu");
             }
 
         }
 
-        private void CalculateScore()
+        private void SaveScore()
+        {
+            var score = CalculateScore();
+            if (IsThisScoreHigher(score))
+            {
+                PlayerPrefs.SetInt(LevelName + "Score", score);
+                PlayerPrefs.Save();
+            }
+        }
+
+
+        private int CalculateScore()
         {
             var startTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "StartTime"));
             var endTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "EndTime"));
             var finishTime = endTime - startTime;
 
+            int score = 0;
+
             // More than 5 minutes -> 1 star
             if (finishTime.TotalSeconds > TwoStarTime)
             {
-                PlayerPrefs.SetInt(LevelName + "Score", 1);
+                score = 1;
             }
 
             // More than 2 less than 5 minutes -> 2 stars
             if (finishTime.TotalSeconds > ThreeStarTime && finishTime.TotalSeconds <= TwoStarTime)
             {
-                PlayerPrefs.SetInt(LevelName + "Score", 2);
+                score = 2;
             }
 
             // Less than 2 minutes -> 3 stars
             if (finishTime.TotalSeconds <= ThreeStarTime)
             {
-                PlayerPrefs.SetInt(LevelName + "Score", 3);
+                score = 3;
             }
 
-            PlayerPrefs.Save();
+            return score;
         }
 
+        private bool IsThisScoreHigher(int thisScore)
+        {
+            return thisScore > _levelManagerRead.GetScore(LevelName);
+        }
 
     }
 }

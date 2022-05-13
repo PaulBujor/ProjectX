@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 2367124382305755321}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: OverlayWrapper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

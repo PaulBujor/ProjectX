@@ -2040,8 +2040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f7c7924bf7f44299b7594d31bf920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Overlay: {fileID: 1577795442}
-  TimeValue: {fileID: 678383613}
+  _overlay: {fileID: 1577795442}
+  _timeValue: {fileID: 678383613}
 --- !u!1 &198859930
 GameObject:
   m_ObjectHideFlags: 0
@@ -29156,6 +29156,10 @@ PrefabInstance:
     - target: {fileID: 6802517607866441826, guid: 0134bf25c287b284c9080df64202dbfd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802517607866441826, guid: 0134bf25c287b284c9080df64202dbfd, type: 3}
+      propertyPath: m_TagString
+      value: OverlayWrapper
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0134bf25c287b284c9080df64202dbfd, type: 3}

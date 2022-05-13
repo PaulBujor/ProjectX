@@ -10,10 +10,14 @@ public class LevelScore : MonoBehaviour
     private const string _star2 = "StarMiddle";
     private const string _star3 = "StarRight";
 
-    public int Score = 0;
-    public string LevelName = "Level 1";
-
     private const int _maxScore = 3;
+
+
+    [SerializeField]
+    private int Score = 0;
+    [SerializeField]
+    private string LevelName = "Level 1";
+
 
     void Start()
     {

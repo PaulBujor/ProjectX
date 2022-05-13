@@ -11,6 +11,7 @@ TagManager:
   - EndLevelArea
   - SceneFader
   - DeadlyTrap
+  - OverlayWrapper
   layers:
   - Default
   - TransparentFX

@@ -6,13 +6,19 @@ namespace Assets.Environment
     public class EndLevel : MonoBehaviour
     {
         [Header("Load next scene")]
-        [SerializeField] public string scene;
+        [SerializeField] private string scene;
 
         private LevelManagerWrite _levelManager;
 
-        private void Start()
+        void Awake()
         {
             _levelManager = GetComponentInParent<LevelManagerWrite>();
+
+        }
+
+        private void Start()
+        {
+            _levelManager.StartLevel();
         }
         //TODO add what to load
 

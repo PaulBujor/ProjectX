@@ -12,6 +12,7 @@ using UnityEngine.UI;
 public class PauseManager : MonoBehaviour
 {
     public static bool IsGamePaused;
+    [Header("The object whose visibility will be turned on/off")]
     [SerializeField]
     private GameObject _overlay;
     [SerializeField]
@@ -37,7 +38,7 @@ public class PauseManager : MonoBehaviour
         _overlay.SetActive(true);
         Time.timeScale = 0f;
         IsGamePaused = true;
-
+        AudioListener.pause = true;
         _timeValue.text = GetTimeSinceStart();
     }
 
@@ -46,6 +47,7 @@ public class PauseManager : MonoBehaviour
         _overlay.SetActive(false);
         Time.timeScale = 1f;
         IsGamePaused = false;
+        AudioListener.pause = false;
     }
 
     private string GetTimeSinceStart()
