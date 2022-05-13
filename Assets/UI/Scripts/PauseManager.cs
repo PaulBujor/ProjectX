@@ -6,11 +6,16 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+///     Inspired by https://www.youtube.com/watch?v=JivuXdrIHK0
+/// </summary>
 public class PauseManager : MonoBehaviour
 {
     public static bool IsGamePaused;
-    public GameObject Overlay;
-    public Text TimeValue;
+    [SerializeField]
+    private GameObject _overlay;
+    [SerializeField]
+    private Text _timeValue;
 
     public void OnEscape(InputAction.CallbackContext ctx)
     {
@@ -29,16 +34,16 @@ public class PauseManager : MonoBehaviour
 
     private void Pause()
     {
-        Overlay.SetActive(true);
+        _overlay.SetActive(true);
         Time.timeScale = 0f;
         IsGamePaused = true;
 
-        TimeValue.text = GetTimeSinceStart();
+        _timeValue.text = GetTimeSinceStart();
     }
 
     public void Resume()
     {
-        Overlay.SetActive(false);
+        _overlay.SetActive(false);
         Time.timeScale = 1f;
         IsGamePaused = false;
     }

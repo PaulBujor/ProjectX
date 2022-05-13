@@ -4,15 +4,23 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.LevelManager
 {
+    /// <summary>
+    ///     Inspired by https://www.red-gate.com/simple-talk/development/dotnet-development/saving-game-data-with-unity/
+    /// </summary>
     public class LevelManagerWrite : MonoBehaviour
     {
         private const int TwoStarTime = 6*60;
         private const int ThreeStarTime = 3*60;
     
         private string LevelName;
-        void Start()
+
+        void Awake()
         {
             LevelName = SceneManager.GetActiveScene().name.ToLower();
+        }
+
+        void Start()
+        {
             StartLevel();
         }
 
@@ -47,11 +55,7 @@ namespace Assets.LevelManager
         {
             var startTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "StartTime"));
             var endTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "EndTime"));
-            Debug.Log($"CALCULATING START TIME: {startTime}");
-            Debug.Log($"CALCULATING END TIME: {endTime}");
             var finishTime = endTime - startTime;
-            Debug.Log($"CALCULATING FINISH TIME: {finishTime}");
-            Debug.Log($"CALCULATING FINISH TIME SECONDS: {finishTime.TotalSeconds}");
 
             // More than 5 minutes -> 1 star
             if (finishTime.TotalSeconds > TwoStarTime)
