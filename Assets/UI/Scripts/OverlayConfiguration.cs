@@ -30,18 +30,9 @@ public class OverlayConfiguration : MonoBehaviour
     {
         if (visible)
         {
-            _timeValue.GetComponent<Text>().text = GetTimeSinceStart();
+            _timeValue.GetComponent<Text>().text = LevelManagerTimer.GetTimeSinceStart().time;
         }
 
         _overlay.SetActive(visible);
-    }
-
-    private string GetTimeSinceStart()
-    {
-        var levelName = SceneManager.GetActiveScene().name.ToLower();
-        var time = DateTime.Parse(PlayerPrefs.GetString(levelName + "StartTime"));
-        var timeSinceStart = DateTime.Now - time;
-        var timeSinceStartString = timeSinceStart.ToString("mm\\:ss");
-        return timeSinceStartString;
     }
 }

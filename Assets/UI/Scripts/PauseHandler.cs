@@ -9,9 +9,7 @@ using UnityEngine.UI;
 
 public class PauseHandler : MonoBehaviour
 {
-
     private OverlayConfiguration _overlay;
-
 
     void Awake()
     {
@@ -20,7 +18,7 @@ public class PauseHandler : MonoBehaviour
 
     public void OnEscape(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && !LevelCompletedHandler.IsGameFinished)
         {
             if (PauseManager.IsGamePaused)
             {
@@ -39,18 +37,9 @@ public class PauseHandler : MonoBehaviour
         _overlay.SetOverlayVisible(true);
     }
 
-    public void Resume()
+    private void Resume()
     {
         PauseManager.ResumeGame();
         _overlay.SetOverlayVisible(false);
     }
-
-    //private string GetTimeSinceStart()
-    //{
-    //    var levelName = SceneManager.GetActiveScene().name.ToLower();
-    //    var time = DateTime.Parse(PlayerPrefs.GetString(levelName + "StartTime"));
-    //    var timeSinceStart = DateTime.Now - time;
-    //    var timeSinceStartString = timeSinceStart.ToString("mm\\:ss");
-    //    return timeSinceStartString;
-    //}
 }
