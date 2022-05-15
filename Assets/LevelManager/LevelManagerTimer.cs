@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class LevelManagerTimer : MonoBehaviour
 {
-
     private static float _timer;
     void Start()
     {
@@ -22,7 +21,7 @@ public class LevelManagerTimer : MonoBehaviour
 
     public static (string time, float seconds) GetTimeSinceStart()
     {
-        var seconds = TimeSpan.FromSeconds((double)_timer);
+        var seconds = TimeSpan.FromSeconds(_timer);
         var time = seconds.ToString("mm\\:ss");
         return (time, _timer);
     }

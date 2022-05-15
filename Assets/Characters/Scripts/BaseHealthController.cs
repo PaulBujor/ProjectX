@@ -11,10 +11,9 @@ namespace Assets.Characters.Scripts
         [SerializeField] private int _health = 3;
 
         private BaseAudioController _audioController;
-        
-
         protected virtual void Start()
         {
+            NotifyHealthBarController(_health);
             _audioController = GetComponent<BaseAudioController>();
             if (_health <= 0)
             {
@@ -42,6 +41,16 @@ namespace Assets.Characters.Scripts
                 {
                     _audioController.PlayOnce("TakeDamage");
                 }
+            }
+
+            NotifyHealthBarController(_health);
+        }
+
+        private void NotifyHealthBarController(int health)
+        {
+            if (GetType() == typeof(PlayerHealthController))
+            {
+                HealthBarController.SetHealth(_health);
             }
         }
 
