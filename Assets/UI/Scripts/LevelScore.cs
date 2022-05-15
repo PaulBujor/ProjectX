@@ -21,7 +21,7 @@ public class LevelScore : MonoBehaviour
 
     void Start()
     {
-        Score = FindObjectOfType<LevelManagerRead>().GetScore(LevelName);
+        Score = LevelManagerRead.GetScore(LevelName);
 
         if (Score == 0)
         {

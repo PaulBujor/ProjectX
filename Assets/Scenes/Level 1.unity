@@ -29139,7 +29139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3469269393226319254, guid: 0134bf25c287b284c9080df64202dbfd, type: 3}
       propertyPath: m_Name
-      value: OverlayMenu
+      value: PauseOverlay
       objectReference: {fileID: 0}
     - target: {fileID: 5464225895748236086, guid: 0134bf25c287b284c9080df64202dbfd, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target

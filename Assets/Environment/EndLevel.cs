@@ -8,17 +8,10 @@ namespace Assets.Environment
         [Header("Load next scene")]
         [SerializeField] private string scene;
 
-        private LevelManagerWrite _levelManager;
 
-        void Awake()
+        void Start()
         {
-            _levelManager = GetComponentInParent<LevelManagerWrite>();
-
-        }
-
-        private void Start()
-        {
-            _levelManager.StartLevel();
+            LevelManagerWrite.StartLevel();
         }
         //TODO add what to load
 
@@ -27,7 +20,8 @@ namespace Assets.Environment
             if (collision.gameObject.tag.Equals("Player"))
             {
                 Debug.Log(collision.gameObject.tag);
-                _levelManager.EndLevel(false);
+                LevelManagerWrite.EndLevel(true);
+
             }
         }
     }

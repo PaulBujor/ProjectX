@@ -1199,67 +1199,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166874070}
   m_CullTransparentMesh: 1
---- !u!1001 &1409704551
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 193484, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_Name
-      value: SSF
-      objectReference: {fileID: 0}
-    - target: {fileID: 193484, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420534, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1b5025bf2a68849eeb84364151eb501e, type: 3}
 --- !u!1 &1539431207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,7 +1298,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2075228302}
+      - m_Target: {fileID: 1715192777}
         m_TargetAssemblyTypeName: Assets.LevelManager.LevelSwitcher, Assembly-CSharp
         m_MethodName: ChangeLevelWithFade
         m_Mode: 5
@@ -1696,6 +1635,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 218af2c2ae36bb14a961c562f1a35f04, type: 3}
+--- !u!114 &1715192777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2908996018691254884, guid: 218af2c2ae36bb14a961c562f1a35f04, type: 3}
+  m_PrefabInstance: {fileID: 1715192776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61a54ffafa82324683f68c040ee8dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1856025487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,8 +1909,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2075228302}
-        m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
+      - m_Target: {fileID: 1715192777}
+        m_TargetAssemblyTypeName: Assets.LevelManager.LevelSwitcher, Assembly-CSharp
         m_MethodName: ChangeLevelWithFade
         m_Mode: 5
         m_Arguments:

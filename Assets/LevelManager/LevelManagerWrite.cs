@@ -15,14 +15,24 @@ namespace Assets.LevelManager
         private const int TwoStarTime = 6 * 60;
         private const int ThreeStarTime = 3 * 60;
 
-        private string LevelName;
+        private static string LevelName;
+
+        //public static Action<bool> OnEndLevel;
+        //public static Action OnStartLevel;
 
         void Awake()
         {
             LevelName = SceneManager.GetActiveScene().name.ToLower();
+            //OnEndLevel += Test;
+            //OnStartLevel += StartLevel;
         }
 
-        public void StartLevel()
+        private void Test(bool success)
+        {
+            Debug.Log("TWERKS");
+        }
+
+        public static void StartLevel()
         {
             var startTime = DateTime.Now;
             PlayerPrefs.SetString(LevelName + "StartTime", startTime.ToString());
@@ -30,7 +40,7 @@ namespace Assets.LevelManager
             Debug.Log("START TIME IS: " + startTime);
         }
 
-        public void EndLevel(bool success)
+        public static void EndLevel(bool success)
         {
             var endTime = DateTime.Now;
             PlayerPrefs.SetString(LevelName + "EndTime", endTime.ToString());
@@ -39,17 +49,17 @@ namespace Assets.LevelManager
             {
                 SaveScore();
                 //Debug.Log($"Obtained score: {PlayerPrefs.GetInt(LevelName + "Score")}");
-                Debug.Log($"Obtained score: {_levelManagerRead.GetScore(LevelName)}");
-                _levelManagerSwitcher.ChangeLevelWithFade("LevelSelector");
+                Debug.Log($"Obtained score: {LevelManagerRead.GetScore(LevelName)}");
+                LevelSwitcher.ChangeLevelWithFade("LevelSelector");
             }
             else
             {
-                _levelManagerSwitcher.ChangeLevelWithoutFade("MainMenu");
+                LevelSwitcher.ChangeLevelWithoutFade("MainMenu");
             }
 
         }
 
-        private void SaveScore()
+        private static void SaveScore()
         {
             var score = CalculateScore();
             if (IsThisScoreHigher(score))
@@ -60,7 +70,7 @@ namespace Assets.LevelManager
         }
 
 
-        private int CalculateScore()
+        private static int CalculateScore()
         {
             var startTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "StartTime"));
             var endTime = DateTime.Parse(PlayerPrefs.GetString(LevelName + "EndTime"));
@@ -89,9 +99,9 @@ namespace Assets.LevelManager
             return score;
         }
 
-        private bool IsThisScoreHigher(int thisScore)
+        private static bool IsThisScoreHigher(int thisScore)
         {
-            return thisScore > _levelManagerRead.GetScore(LevelName);
+            return thisScore > LevelManagerRead.GetScore(LevelName);
         }
 
     }
