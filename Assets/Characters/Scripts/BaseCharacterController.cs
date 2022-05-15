@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Audio.Scripts;
-
+using Assets.Characters.Player.Scripts;
 using UnityEngine;
 // ReSharper disable Unity.PreferAddressByIdToGraphicsParams
 
@@ -73,11 +73,11 @@ namespace Assets.Characters
         {
             Move();
 
-            if (animator != null)
+            if (animator != null && GetType() == typeof(PlayerController))
             {
                 //checking velocity and if character is grounded
                 animator.SetFloat("velocityX", Mathf.Abs(Rigidbody.velocity.x));
-                animator.SetBool("isGrounded", CharacterIsGrounded);                
+                animator.SetBool("isGrounded", CharacterIsGrounded);
                 animator.SetFloat("velocityY", Rigidbody.velocity.y);
             }
         }
@@ -141,7 +141,7 @@ namespace Assets.Characters
                 Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 
                 //JumpAnimations
-                if (animator != null)
+                if (animator != null && GetType() == typeof(PlayerController))
                 {
                     animator.SetTrigger("jump");
                 }

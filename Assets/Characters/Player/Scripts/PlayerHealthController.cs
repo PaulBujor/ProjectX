@@ -40,17 +40,13 @@ namespace Assets.Characters.Player.Scripts
 
             }
 
-            LevelManagerWrite.EndLevel(false);
             StartCoroutine(EndGameTimeout());
-
         }
 
         private IEnumerator EndGameTimeout()
         {
-            yield return new WaitForSeconds(2);
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
+            yield return new WaitForSeconds(1);
+            LevelManagerWrite.EndLevel(false);
         }
 
         private IEnumerator DamageCooldown()

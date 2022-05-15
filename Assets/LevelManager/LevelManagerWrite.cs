@@ -17,19 +17,9 @@ namespace Assets.LevelManager
 
         private static string LevelName;
 
-        //public static Action<bool> OnEndLevel;
-        //public static Action OnStartLevel;
-
         void Awake()
         {
             LevelName = SceneManager.GetActiveScene().name.ToLower();
-            //OnEndLevel += Test;
-            //OnStartLevel += StartLevel;
-        }
-
-        private void Test(bool success)
-        {
-            Debug.Log("TWERKS");
         }
 
         public static void StartLevel()
@@ -48,15 +38,13 @@ namespace Assets.LevelManager
             if (success)
             {
                 SaveScore();
-                //Debug.Log($"Obtained score: {PlayerPrefs.GetInt(LevelName + "Score")}");
-                Debug.Log($"Obtained score: {LevelManagerRead.GetScore(LevelName)}");
-                LevelSwitcher.ChangeLevelWithFade("LevelSelector");
+                Debug.Log($"Obtained score: {CalculateScore()}");
+                LevelCompletedHandler.HandleLevelCompleted();
             }
             else
             {
-                LevelSwitcher.ChangeLevelWithoutFade("MainMenu");
+                DeathHandler.HandleDeath();
             }
-
         }
 
         private static void SaveScore()

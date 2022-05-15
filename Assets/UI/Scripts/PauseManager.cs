@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <remarks>
+///     Inspired by https://www.youtube.com/watch?v=JivuXdrIHK0
+/// </remarks>
 public class PauseManager : MonoBehaviour
 {
-    public static bool IsGamePaused;
+    public static bool IsGamePaused = false;
     public static void PauseGame()
     {
         Time.timeScale = 0f;

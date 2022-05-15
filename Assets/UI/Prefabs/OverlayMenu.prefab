@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1973712766178654783}
   - component: {fileID: 5538231670873322903}
   m_Layer: 5
-  m_Name: Text
+  m_Name: BannerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,6 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1955404403314937651}
+  - component: {fileID: 8271420649545735658}
   m_Layer: 0
   m_Name: OverlayMenu
   m_TagString: Untagged
@@ -267,6 +268,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8271420649545735658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469269393226319254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2be6ef360614d488171a8b0adba4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overlay: {fileID: 6802517607866441826}
+  _bannerText: {fileID: 1173897546716198934}
+  _timeValue: {fileID: 2860710796879585092}
+  _overlayName: 
 --- !u!1 &4993235387878306895
 GameObject:
   m_ObjectHideFlags: 0
