@@ -1,54 +1,24 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
+/// <remarks>
+///     Inspired by https://www.youtube.com/watch?v=JivuXdrIHK0
+/// </remarks>
 public class PauseManager : MonoBehaviour
 {
-    public static bool IsGamePaused;
-    public GameObject Overlay;
-    public Text TimeValue;
-
-    public void OnEscape(InputAction.CallbackContext ctx)
+    public static bool IsGamePaused = false;
+    public static void PauseGame()
     {
-        if (ctx.started)
-        {
-            if (IsGamePaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-    }
-
-    private void Pause()
-    {
-        Overlay.SetActive(true);
         Time.timeScale = 0f;
         IsGamePaused = true;
-
-        TimeValue.text = GetTimeSinceStart();
+        AudioListener.pause = true;
     }
 
-    public void Resume()
+    public static void ResumeGame()
     {
-        Overlay.SetActive(false);
         Time.timeScale = 1f;
         IsGamePaused = false;
-    }
-
-    private string GetTimeSinceStart()
-    {
-        var levelName = SceneManager.GetActiveScene().name.ToLower();
-        var time = DateTime.Parse(PlayerPrefs.GetString(levelName + "StartTime"));
-        var timeSinceStart = DateTime.Now - time;
-        var timeSinceStartString = timeSinceStart.ToString("mm\\:ss");
-        return timeSinceStartString;
+        AudioListener.pause = false;
     }
 }

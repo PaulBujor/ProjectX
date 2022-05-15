@@ -1,5 +1,6 @@
 using System.Collections;
 using Assets.Characters.Scripts;
+using Assets.LevelManager;
 using UnityEngine;
 
 namespace Assets.Characters.Player.Scripts
@@ -15,6 +16,11 @@ namespace Assets.Characters.Player.Scripts
         private float _damageVisualizerFrequency = 3f;
 
         private bool _isImmune = false;
+        private PauseHandler _pauseHandler;
+        void Awake()
+        {
+            _pauseHandler = GetComponentInChildren<PauseHandler>();
+        }
 
         protected override void OnDeath()
         {
@@ -35,15 +41,12 @@ namespace Assets.Characters.Player.Scripts
             }
 
             StartCoroutine(EndGameTimeout());
-
         }
 
         private IEnumerator EndGameTimeout()
         {
-            yield return new WaitForSeconds(2);
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
+            yield return new WaitForSeconds(1);
+            LevelManagerWrite.EndLevel(false);
         }
 
         private IEnumerator DamageCooldown()
