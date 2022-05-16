@@ -43,4 +43,12 @@ public class EnemyHealthController : BaseHealthController
             TakeDamage();
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("DeadlyTrap"))
+        {
+            OnDeath();
+        }
+    }
 }
