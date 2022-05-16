@@ -26,7 +26,7 @@ public class LevelCompletedHandler : MonoBehaviour
     public void GoHome()
     {
         PauseManager.ResumeGame();
-        LevelSwitcher.ChangeLevelWithFade("MainMenu");
+        LevelSwitcher.ChangeLevelWithFade("LevelSelector");
     }
 
     public static void HandleLevelCompleted(int score)

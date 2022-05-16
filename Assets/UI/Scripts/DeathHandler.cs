@@ -23,7 +23,7 @@ public class DeathHandler : MonoBehaviour
     public void GoHome()
     {
         PauseManager.ResumeGame();
-        LevelSwitcher.ChangeLevelWithFade("MainMenu");
+        LevelSwitcher.ChangeLevelWithFade("LevelSelector");
     }
 
     public static void HandleDeath()
