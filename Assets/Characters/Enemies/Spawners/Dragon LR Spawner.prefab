@@ -76,4 +76,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2972304219489140341, guid: 5e01651e9310c4d4b9f28db24dc22a34, type: 3}
   isRespawning: 1
-  respawnTimer: 4
+  respawnTimer: 10

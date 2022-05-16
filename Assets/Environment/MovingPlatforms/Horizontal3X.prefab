@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6043983663071790217}
   - component: {fileID: 6043983663071790218}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GrassLeft
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6043983663322671919}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Position1
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6043983663371642892}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Horizontal3X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6043983663467080326}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Position2
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6043983664352287818}
   - component: {fileID: 6043983664352287819}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GrassRight
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 6043983664982812499}
   - component: {fileID: 6043983664982812497}
   - component: {fileID: 2447515754584874371}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6043983665149804144}
   - component: {fileID: 6043983665149804145}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GrassMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
