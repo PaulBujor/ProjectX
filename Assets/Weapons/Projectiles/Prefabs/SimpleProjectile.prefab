@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileSpeed: 20
-  _timeToLive: 0.7
+  _timeToLive: 1.8
   _inflictedDamage: 1
 --- !u!1 &6200159740848147009
 GameObject:
