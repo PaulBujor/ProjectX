@@ -7,7 +7,7 @@
 
 
 ## Sources:
-Assets
+### Assets
 Bayat Free Platform Game Assets:
 https://assetstore.unity.com/packages/2d/environments/free-platform-game-assets-85838#description
 
@@ -27,7 +27,7 @@ https://assetstore.unity.com/packages/2d/characters/dragon-warrior-free-93896#de
 A* Pathfinding Project
 https://arongranberg.com/astar/freevspro
 
-References
+### References
 Tile import and tilemaps:
 https://www.youtube.com/watch?v=on9nwbZngyw&t=600s&ab_channel=Brackeys
 
