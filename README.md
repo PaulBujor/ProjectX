@@ -8,9 +8,13 @@ https://paulbujor.github.io/Project-X/
 
 ### Controls
 WASD or Arrows - Move
+
 Z - Jump
+
 X - Shoot
+
 C - Lock Movement
+
 Esc/P - Pause
 
 ## Sources:
